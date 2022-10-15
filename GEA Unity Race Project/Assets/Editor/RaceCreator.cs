@@ -3,6 +3,8 @@ using UnityEditor;
 
 public class RaceCreator : EditorWindow
 {
+    // Name
+    string raceName = "New Race";
 
     // Timer
     bool foldoutTimer = true;
@@ -13,18 +15,8 @@ public class RaceCreator : EditorWindow
     // Laps
     int laps = 0;
 
-    // Starting Line
-    bool foldoutStart = true;
-    Object startModel;
-    GameObject startObject;
-
-    // Finish Line
-    bool foldoutFinish = true;
-    Object finishModel;
-    GameObject finishObject;
-
     // Checkpoint
-    bool foldoutCheckpoint = true;
+    int checkpointNum = 0;
 
 
     [MenuItem("GameObject/Race Creator")]
@@ -35,10 +27,19 @@ public class RaceCreator : EditorWindow
 
     private void OnGUI()
     {
+        NameGUI();
         TimerGUI();
         LapsGUI();
-        StartGUI();
-        FinishGUI();
+        CheckpointGUI();
+        ButtonGUI();
+    }
+
+    private void NameGUI()
+    {
+        GUILayout.Label("Create a new race");
+        EditorGUILayout.Space();
+        raceName = EditorGUILayout.TextField("Race Name", raceName);
+        EditorGUILayout.Space();
     }
 
     private void TimerGUI()
@@ -48,11 +49,15 @@ public class RaceCreator : EditorWindow
 
         if (foldoutTimer)
         {
+            EditorGUILayout.LabelField("Adds a timer to the race");
             timer = EditorGUILayout.Toggle("Timer", timer);
 
             if (timer)
             {
                 initialTime = Mathf.Clamp(EditorGUILayout.IntField("Initial Time", initialTime), 0, int.MaxValue);
+                EditorGUILayout.Space();
+
+                EditorGUILayout.LabelField("The amount of time a checkpoint gives");
                 timePerPoint = Mathf.Clamp(EditorGUILayout.IntField("Time per Checkpoint", timePerPoint), 0, int.MaxValue);
             }
         }
@@ -69,54 +74,34 @@ public class RaceCreator : EditorWindow
         EditorGUILayout.Space();
     }
 
-    private void StartGUI()
-    {
-        foldoutStart = EditorGUILayout.BeginFoldoutHeaderGroup(foldoutStart, "Starting Line");
-        EditorGUI.indentLevel++;
-
-        if (foldoutStart)
-        {
-            EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.PrefixLabel("Model");
-            startModel = EditorGUILayout.ObjectField(startModel, typeof(Object), true);
-            EditorGUILayout.EndHorizontal();
-
-            EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.PrefixLabel("GameObject");
-            startObject = (GameObject)EditorGUILayout.ObjectField(startObject, typeof(GameObject), true);
-            EditorGUILayout.EndHorizontal();
-        }
-
-        EditorGUI.indentLevel--;
-        EditorGUILayout.EndFoldoutHeaderGroup();
-        EditorGUILayout.Space();
-    }
-
-    private void FinishGUI()
-    {
-        foldoutFinish = EditorGUILayout.BeginFoldoutHeaderGroup(foldoutFinish, "Finish Line");
-        EditorGUI.indentLevel++;
-
-        if (foldoutFinish)
-        {
-            EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.PrefixLabel("Model");
-            finishModel = EditorGUILayout.ObjectField(finishModel, typeof(Object), true);
-            EditorGUILayout.EndHorizontal();
-
-            EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.PrefixLabel("Gameobject");
-            finishObject = (GameObject)EditorGUILayout.ObjectField(finishObject, typeof(GameObject), true);
-            EditorGUILayout.EndHorizontal();
-        }
-
-        EditorGUI.indentLevel--;
-        EditorGUILayout.EndFoldoutHeaderGroup();
-        EditorGUILayout.Space();
-    }
-
     private void CheckpointGUI()
     {
+        checkpointNum = Mathf.Clamp(EditorGUILayout.IntField("Number of Checkpoints", checkpointNum), 0, int.MaxValue);
+        EditorGUILayout.Space();
+    }
 
+    private void ButtonGUI()
+    {
+        if (GUILayout.Button("Create New Race"))
+        {
+            Debug.Log("Created new race");
+            createNewRace();
+        }
+    }
+
+    private void createNewRace()
+    {
+        GameObject newRace = new GameObject();
+        newRace.name = raceName;
+        newRace.AddComponent<Race>();
+
+        Race newRaceComponent = newRace.GetComponent<Race>();
+        newRaceComponent.timer = timer;
+        newRaceComponent.initialTime = initialTime;
+        newRaceComponent.timePerPoint = timePerPoint;
+        newRaceComponent.laps = laps;
+        //newRaceComponent.checkpointNum = checkpointNum;
+
+        newRaceComponent.createRace(checkpointNum);
     }
 }
