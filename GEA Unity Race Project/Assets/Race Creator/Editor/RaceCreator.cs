@@ -28,8 +28,8 @@ public class RaceCreator : EditorWindow
     private void OnGUI()
     {
         NameGUI();
-        TimerGUI();
         LapsGUI();
+        TimerGUI();
         CheckpointGUI();
         ButtonGUI();
     }
@@ -102,6 +102,6 @@ public class RaceCreator : EditorWindow
         newRaceComponent.laps = laps;
         //newRaceComponent.checkpointNum = checkpointNum;
 
-        newRaceComponent.createRace(checkpointNum);
+        newRaceComponent.CreateRace(checkpointNum);
     }
 }

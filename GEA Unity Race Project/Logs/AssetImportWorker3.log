@@ -1,0 +1,423 @@
+Using pre-set license
+Built from '2022.1/staging' branch; Version is '2022.1.16f1 (7321c9670bc2) revision 7545289'; Using compiler version '192829333'; Build Type 'Release'
+OS: 'Windows 10  (10.0.19044) 64bit CoreSingleLanguage' Language: 'en' Physical Memory: 15776 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\2022.1.16f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker3
+-projectPath
+C:/Users/nicho/Documents/Game Engine Architecture/Git/GEA-Unity-Race/GEA Unity Race Project
+-logFile
+Logs/AssetImportWorker3.log
+-srvPort
+49678
+Successfully changed project path to: C:/Users/nicho/Documents/Game Engine Architecture/Git/GEA-Unity-Race/GEA Unity Race Project
+C:/Users/nicho/Documents/Game Engine Architecture/Git/GEA-Unity-Race/GEA Unity Race Project
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Refreshing native plugins compatible for Editor in 53.16 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2022.1.16f1 (7321c9670bc2)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2022.1.16f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/nicho/Documents/Game Engine Architecture/Git/GEA-Unity-Race/GEA Unity Race Project/Assets
+GfxDevice: creating device client; threaded=0; jobified=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 3060 Laptop GPU (ID=0x2520)
+    Vendor:   NVIDIA
+    VRAM:     6023 MB
+    Driver:   31.0.15.1748
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2022.1.16f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2022.1.16f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2022.1.16f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56720
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2022.1.16f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.082342 seconds.
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 50.47 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.845 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1846ms)
+		BeginReloadAssembly (629ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (0ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (1ms)
+		EndReloadAssembly (782ms)
+			LoadAssemblies (627ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (444ms)
+				TypeCache.Initialize (444ms)
+					TypeCache.ScanAssembly (441ms)
+				ResolveRequiredComponents (1ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (27ms)
+			SetupLoadedEditorAssemblies (250ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (8ms)
+				SetLoadedEditorAssemblies (6ms)
+				RefreshPlugins (51ms)
+				BeforeProcessingInitializeOnLoad (1ms)
+				ProcessInitializeOnLoadAttributes (133ms)
+				ProcessInitializeOnLoadMethodAttributes (51ms)
+				AfterProcessingInitializeOnLoad (0ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (0ms)
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.912561 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 44.62 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Error saving file Library/StateCache/LayerSettings/9e/9ecc5c3c162a7aba29bafa64c8b94b7c.json. Error: System.IO.IOException: Sharing violation on path C:\Users\nicho\Documents\Game Engine Architecture\Git\GEA-Unity-Race\GEA Unity Race Project\Library\StateCache\LayerSettings\9e\9ecc5c3c162a7aba29bafa64c8b94b7c.json
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.Boolean anonymous, System.IO.FileOptions options) [0x0019e] in <3dd5df5ef4974f29afeb2d3ba227c5da>:0 
+  at System.IO.FileStream..ctor (System.String path, System.IO.FileMode mode, System.IO.FileAccess access, System.IO.FileShare share, System.Int32 bufferSize, System.IO.FileOptions options) [0x00000] in <3dd5df5ef4974f29afeb2d3ba227c5da>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.FileStream..ctor(string,System.IO.FileMode,System.IO.FileAccess,System.IO.FileShare,int,System.IO.FileOptions)
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding, System.Int32 bufferSize) [0x00055] in <3dd5df5ef4974f29afeb2d3ba227c5da>:0 
+  at System.IO.StreamWriter..ctor (System.String path, System.Boolean append, System.Text.Encoding encoding) [0x00000] in <3dd5df5ef4974f29afeb2d3ba227c5da>:0 
+  at (wrapper remoting-invoke-with-check) System.IO.StreamWriter..ctor(string,bool,System.Text.Encoding)
+  at System.IO.File.WriteAllText (System.String path, System.String contents, System.Text.Encoding encoding) [0x00034] in <3dd5df5ef4974f29afeb2d3ba227c5da>:0 
+  at UnityEditor.StateCache`1[T].SetState (UnityEngine.Hash128 key, T obj) [0x0004b] in <8a1c902e1cc24cec8e4dda915647a0cd>:0 
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:LogError (object)
+UnityEditor.StateCache`1<UnityEditor.Tools/LayerSettings>:SetState (UnityEngine.Hash128,UnityEditor.Tools/LayerSettings)
+UnityEditor.Tools:set_lockedLayers (int)
+UnityEditor.Tools:OnEnable ()
+UnityEngine.ScriptableObject:CreateInstance (System.Type)
+UnityEngine.ScriptableObject:CreateInstance<UnityEditor.Tools> ()
+UnityEditor.Tools:get_get ()
+UnityEditor.Tools:get_lockedLayers ()
+AutoLockUILayer:SetUILayerIsLocked (bool) (at Assets/Karting/Scripts/Editor/AutoLockUILayer.cs:36)
+AutoLockUILayer:.cctor () (at Assets/Karting/Scripts/Editor/AutoLockUILayer.cs:16)
+System.Runtime.CompilerServices.RuntimeHelpers:RunClassConstructor (System.RuntimeTypeHandle)
+UnityEditor.EditorAssemblies:ProcessInitializeOnLoadAttributes (System.Type[])
+
+(Filename: Assets/Karting/Scripts/Editor/AutoLockUILayer.cs Line: 36)
+
+Mono: successfully reloaded assembly
+- Completed reload, in  6.492 seconds
+Domain Reload Profiling:
+	ReloadAssembly (6492ms)
+		BeginReloadAssembly (125ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (5ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (27ms)
+		EndReloadAssembly (6198ms)
+			LoadAssemblies (3513ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (614ms)
+				TypeCache.Initialize (611ms)
+					TypeCache.ScanAssembly (606ms)
+				ResolveRequiredComponents (4ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (49ms)
+			SetupLoadedEditorAssemblies (1985ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (11ms)
+				SetLoadedEditorAssemblies (5ms)
+				RefreshPlugins (45ms)
+				BeforeProcessingInitializeOnLoad (77ms)
+				ProcessInitializeOnLoadAttributes (407ms)
+				ProcessInitializeOnLoadMethodAttributes (1434ms)
+				AfterProcessingInitializeOnLoad (8ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (6ms)
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.06 seconds
+Refreshing native plugins compatible for Editor in 0.94 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3277 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 88 unused Assets / (22.4 MB). Loaded Objects now: 3698.
+Memory consumption went from 0.55 GB to 0.53 GB.
+Total: 10.957500 ms (FindLiveObjects: 0.352700 ms CreateObjectMapping: 0.329500 ms MarkObjects: 3.959700 ms  DeleteObjects: 6.314200 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 20048.524784 seconds.
+  path: Assets/Karting/Audio/StartSound02.wav
+  artifactKey: Guid(30a284806deffbb4691f78109d0b617b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Karting/Audio/StartSound02.wav using Guid(30a284806deffbb4691f78109d0b617b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b7496d30c70ba547351f55985289d6e7') in 0.132186 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/Karting/Prefabs/Props/PhysicsBall_Default.prefab
+  artifactKey: Guid(1d806fa299adb8a4eab57244b3d27969) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Karting/Prefabs/Props/PhysicsBall_Default.prefab using Guid(1d806fa299adb8a4eab57244b3d27969) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6ce26ab1a6520ed95633228bc28406f6') in 0.046341 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Karting/Prefabs/Props/JumpRamp.prefab
+  artifactKey: Guid(db0af21853ba047fda7b6e30b74ffedf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Karting/Prefabs/Props/JumpRamp.prefab using Guid(db0af21853ba047fda7b6e30b74ffedf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '629878d42367e399b16dcceabcc11e7b') in 0.020165 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000040 seconds.
+  path: Assets/Karting/Prefabs/Props/LapCheckpoint.prefab
+  artifactKey: Guid(63c348de78fb78f44befbc3f5bccddc0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Karting/Prefabs/Props/LapCheckpoint.prefab using Guid(63c348de78fb78f44befbc3f5bccddc0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a2aac5d81a6ae416957c98c3a7840610') in 0.017906 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000046 seconds.
+  path: Assets/Karting/Audio/Music.mp3
+  artifactKey: Guid(1939f7149c0fae14a891ac314cb2e8f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Karting/Audio/Music.mp3 using Guid(1939f7149c0fae14a891ac314cb2e8f3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3fc5575bf7350b83190ad7f5d16cf771') in 0.024593 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Karting/Audio/Tire_Screeching.wav
+  artifactKey: Guid(e92cf848e62569a45b1f8cc697211084) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Karting/Audio/Tire_Screeching.wav using Guid(e92cf848e62569a45b1f8cc697211084) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6aa2264dd51b54f211764fe7d7dad819') in 0.015318 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000042 seconds.
+  path: Assets/Karting/Prefabs/Props/StartFinishLine.prefab
+  artifactKey: Guid(5cdf1b2b8a98d6e40a85d1cde3907099) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Karting/Prefabs/Props/StartFinishLine.prefab using Guid(5cdf1b2b8a98d6e40a85d1cde3907099) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'adaf6ee5c9f248fd985427c70356e553') in 0.017249 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Karting/Audio/EngineA4.wav
+  artifactKey: Guid(3d7dea0b41109438aa3242fa6ce220a7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Karting/Audio/EngineA4.wav using Guid(3d7dea0b41109438aa3242fa6ce220a7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b0d216c1a64a3d737d577408e684ed66') in 0.016128 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000066 seconds.
+  path: Assets/Karting/Animations/KartFrontWheelsMask.mask
+  artifactKey: Guid(0b4fa3eb165fa044c89f540d8b738a4f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Karting/Animations/KartFrontWheelsMask.mask using Guid(0b4fa3eb165fa044c89f540d8b738a4f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd0272aa8b80061b3b9b49ecc50008f75') in 0.009982 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Karting/Audio/engine-rev.ogg
+  artifactKey: Guid(7eb03bd77be2345cd94afa59ba4cec74) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Karting/Audio/engine-rev.ogg using Guid(7eb03bd77be2345cd94afa59ba4cec74) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bab22ff838fca8034bbf21617676670b') in 0.020514 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000041 seconds.
+  path: Assets/Karting/Audio/EngineA3.wav
+  artifactKey: Guid(c3af91df4ca764fd9b9f2e778e7e555a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Karting/Audio/EngineA3.wav using Guid(c3af91df4ca764fd9b9f2e778e7e555a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9e93084c9379a22a79807a3b43ab0ef6') in 0.015441 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Karting/Prefabs/KartClassic
+  artifactKey: Guid(a55e39e2c7a89b742916d78c2cfeec7c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Karting/Prefabs/KartClassic using Guid(a55e39e2c7a89b742916d78c2cfeec7c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '846c7cecaba44830945055738ac6507f') in 0.008758 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000047 seconds.
+  path: Assets/Karting/Audio/engine-running.ogg
+  artifactKey: Guid(819e4330b56d74b398255782be41515f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Karting/Audio/engine-running.ogg using Guid(819e4330b56d74b398255782be41515f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3fc2afea33a4df47e38bebbe555acb5f') in 0.019490 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Karting/Animations/KartIdle.FBX
+  artifactKey: Guid(379c82acbb20c4747b42575fb9e5011e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Karting/Animations/KartIdle.FBX using Guid(379c82acbb20c4747b42575fb9e5011e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cf2c192aea78856b24a207ab45e1700a') in 0.061833 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000064 seconds.
+  path: Assets/Karting/Prefabs/Props/CrashObject.prefab
+  artifactKey: Guid(29be64d49c04eed4781cd23c6865ca7c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Karting/Prefabs/Props/CrashObject.prefab using Guid(29be64d49c04eed4781cd23c6865ca7c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd0ec2b26a78ed8bf2d733b60a3d401f6') in 0.047981 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 50.048952 seconds.
+  path: Assets/Mod Assets/3DProps/NatureProps/FirTree.fbx
+  artifactKey: Guid(5fc0e3d37ec294384aaa0b18e537ff86) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Mod Assets/3DProps/NatureProps/FirTree.fbx using Guid(5fc0e3d37ec294384aaa0b18e537ff86) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a2159b431f0269296cb0dcb51671a8c8') in 0.056173 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/Mod Assets/3DProps/NatureProps/PalmTree.fbx
+  artifactKey: Guid(ae36130ee9b994114b35ece84c158fdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Mod Assets/3DProps/NatureProps/PalmTree.fbx using Guid(ae36130ee9b994114b35ece84c158fdc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6099269826db5a5d31aed638dd1134c6') in 0.050634 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.258672 seconds.
+  path: Assets/Mod Assets/3DProps/SpaceProps/Rocket.fbx
+  artifactKey: Guid(b698994a5dd674ee3997e51d3474a09f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Mod Assets/3DProps/SpaceProps/Rocket.fbx using Guid(b698994a5dd674ee3997e51d3474a09f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '616961dd701c1ea8ea03f5d4ed7a86fd') in 0.037861 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3.317328 seconds.
+  path: Assets/Mod Assets/Kart/Custom Materials/Basic Green.mat
+  artifactKey: Guid(85a5f987437cc4794b97b153a23d7ccb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Mod Assets/Kart/Custom Materials/Basic Green.mat using Guid(85a5f987437cc4794b97b153a23d7ccb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '565e0d28040a4ac4751cf0fe57c79deb') in 0.017026 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000035 seconds.
+  path: Assets/Mod Assets/Kart/Custom Materials/Glass Dark.mat
+  artifactKey: Guid(73d3b987427b7456eb9fced2cf259a38) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Mod Assets/Kart/Custom Materials/Glass Dark.mat using Guid(73d3b987427b7456eb9fced2cf259a38) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ed49305802e064fc0151854e2c304404') in 0.016128 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000629 seconds.
+  path: Assets/Mod Assets/Kart/Custom Materials/Neon Green.mat
+  artifactKey: Guid(0030b1f081f074ea79e4c8398f97fc08) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Mod Assets/Kart/Custom Materials/Neon Green.mat using Guid(0030b1f081f074ea79e4c8398f97fc08) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '71aa46edae4d55168aa2eb43ed4a28d0') in 0.014104 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.681013 seconds.
+  path: Assets/Mod Assets/Kart/Hat Prefabs/WizardHat.prefab
+  artifactKey: Guid(942c2c1bb4e544cb09d3494e89bb8041) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Mod Assets/Kart/Hat Prefabs/WizardHat.prefab using Guid(942c2c1bb4e544cb09d3494e89bb8041) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '719a57f8ec41e4dfaee53d81b0ea1859') in 0.023724 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.627454 seconds.
+  path: Assets/Mod Assets/Kart/Trail Prefabs/RainbowTrail.prefab
+  artifactKey: Guid(d3ccf67055b3341468030d0fffd8d16f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Mod Assets/Kart/Trail Prefabs/RainbowTrail.prefab using Guid(d3ccf67055b3341468030d0fffd8d16f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c0b516e83708ecba5ed793d85e2161b7') in 0.029265 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 4.330497 seconds.
+  path: Assets/Mod Assets/ModResources/Fonts/Orbitron-Regular SDF.asset
+  artifactKey: Guid(d393f12bd75574ef991a7a2c74b29c69) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Mod Assets/ModResources/Fonts/Orbitron-Regular SDF.asset using Guid(d393f12bd75574ef991a7a2c74b29c69) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '43b6da6e0a3d9a94aaf2101bdbb0b089') in 0.048437 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Mod Assets/ModResources/Fonts/ZCOOLKuaiLe-Regular SDF.asset
+  artifactKey: Guid(8ebfeea7062344f0c96b8a1d614a92b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Mod Assets/ModResources/Fonts/ZCOOLKuaiLe-Regular SDF.asset using Guid(8ebfeea7062344f0c96b8a1d614a92b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ad123c5b2955d65802481648b2a85ed8') in 0.045402 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.504277 seconds.
+  path: Assets/Mod Assets/ModResources/HatMaterials/Starting_Line_Material.mat
+  artifactKey: Guid(3869da5c1b38e487aaa31c9021e4134f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Mod Assets/ModResources/HatMaterials/Starting_Line_Material.mat using Guid(3869da5c1b38e487aaa31c9021e4134f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0705edcfd96d0afd6d0ecf504cae4dcd') in 0.017314 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.735434 seconds.
+  path: Assets/Mod Assets/ModResources/HatMeshes/WizardHatMesh.fbx
+  artifactKey: Guid(41fa7087e84034b719aeb52d1260a81b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Mod Assets/ModResources/HatMeshes/WizardHatMesh.fbx using Guid(41fa7087e84034b719aeb52d1260a81b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b9343c00cbe7dcf064d543288fdf2494') in 0.029713 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 7.760901 seconds.
+  path: Assets/Mod Assets/ModResources/TrailMaterials/PlatformerRainbowTrailMaterial.mat
+  artifactKey: Guid(fb9022c6471ea4540bead8403c8d7496) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Mod Assets/ModResources/TrailMaterials/PlatformerRainbowTrailMaterial.mat using Guid(fb9022c6471ea4540bead8403c8d7496) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd3bace38f7a33506e5c27d998387bb01') in 0.018513 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 15.404314 seconds.
+  path: Assets/Karting/Art/Models/Building03CornerWideWindow.fbx
+  artifactKey: Guid(2dc0b90df1333dc469eeb6cff505ccb5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Karting/Art/Models/Building03CornerWideWindow.fbx using Guid(2dc0b90df1333dc469eeb6cff505ccb5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ec1292280df83b635da0a2365fa571b5') in 0.016734 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.012730 seconds.
+  path: Assets/Karting/Art/Models/BuildingRoofCorner.fbx
+  artifactKey: Guid(f46a9f80d31a32e47a57aa4858036430) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Karting/Art/Models/BuildingRoofCorner.fbx using Guid(f46a9f80d31a32e47a57aa4858036430) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cb2f871a2ffefdf77990fc5c6c7b9914') in 0.020258 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Karting/Art/Models/BuildingTallModel.fbx
+  artifactKey: Guid(adb35abc445884745af48dba2016ddea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Karting/Art/Models/BuildingTallModel.fbx using Guid(adb35abc445884745af48dba2016ddea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '273a379e015815039a15ecf35d9a1d15') in 0.038679 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000074 seconds.
+  path: Assets/Karting/Art/Models/Mesh_Sun.fbx
+  artifactKey: Guid(d16b83a71cf8a44c497e10545a79767f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Karting/Art/Models/Mesh_Sun.fbx using Guid(d16b83a71cf8a44c497e10545a79767f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd0e4c3aab25c3fe97774d008b27bed0a') in 0.043938 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.696696 seconds.
+  path: Assets/Karting/Art/Models/StoneFlat.fbx
+  artifactKey: Guid(c80f31023dcf9b34cbd0044505be4806) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Karting/Art/Models/StoneFlat.fbx using Guid(c80f31023dcf9b34cbd0044505be4806) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'acbb641560c2c63fa458a2fce06ac257') in 0.017255 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.018514 seconds.
+  path: Assets/Karting/Art/Models/TrackCamberCurveMeshColliderGround.fbx
+  artifactKey: Guid(120e82693d1e13644a7f5b990e783b01) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Karting/Art/Models/TrackCamberCurveMeshColliderGround.fbx using Guid(120e82693d1e13644a7f5b990e783b01) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4518979a240cf7cd941ca17392d128ce') in 0.023110 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.500883 seconds.
+  path: Assets/Karting/Art/Models/TrackCamberMeshColliderWalls.fbx
+  artifactKey: Guid(f5a44503c018d324580820af937c9987) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Karting/Art/Models/TrackCamberMeshColliderWalls.fbx using Guid(f5a44503c018d324580820af937c9987) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7e645ff38d547b6bf82813c0460adc68') in 0.023018 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.005848 seconds.
+  path: Assets/Karting/Art/Models/TrackCurveMedium.fbx
+  artifactKey: Guid(cf8b46f3b71641b42b2e8cf974e9c644) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Karting/Art/Models/TrackCurveMedium.fbx using Guid(cf8b46f3b71641b42b2e8cf974e9c644) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e3fd80713fa94e0e8789d2f379f06b0d') in 0.030972 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.006587 seconds.
+  path: Assets/Karting/Art/Models/TrackCurveSmall.fbx
+  artifactKey: Guid(6aba5d5cbbb6df346ba45c2991fcaf00) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Karting/Art/Models/TrackCurveSmall.fbx using Guid(6aba5d5cbbb6df346ba45c2991fcaf00) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '61b9a5544a7def785c5faeffd5b0f115') in 0.033891 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.021732 seconds.
+  path: Assets/Karting/Art/Models/TrackToCamber.fbx
+  artifactKey: Guid(d64d45aad01a61a419213469c5e6094b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Karting/Art/Models/TrackToCamber.fbx using Guid(d64d45aad01a61a419213469c5e6094b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '506d8c9d3f4599a75018c8f463e59df1') in 0.038699 seconds 
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0
