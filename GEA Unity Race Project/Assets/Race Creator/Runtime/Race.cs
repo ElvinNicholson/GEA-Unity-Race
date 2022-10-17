@@ -14,8 +14,9 @@ public class Race : MonoBehaviour
 
     // Timer
     public bool timer = false;
-    public int initialTime = 0;
-    public int timePerPoint = 0;
+    public float initialTime = 0;
+    public float timePerPoint = 0;
+    private float timeLeft;
 
     // Laps
     public int laps = 0;
@@ -41,12 +42,18 @@ public class Race : MonoBehaviour
     Gate lastGate;
     int lastGateNum = 0;
 
+    // Race Info
+    public GameObject raceInfoObject;
+    public RaceInfo raceInfo;
+
     private void Start()
     {
         raceIsRunning = true;
 
         currentGate = gateOrder[currentGateNum].GetComponent<Gate>();
         lastGate = gateOrder[lastGateNum].GetComponent<Gate>();
+
+        timeLeft = initialTime;
     }
 
     private void Update()
@@ -54,14 +61,26 @@ public class Race : MonoBehaviour
         if (raceIsRunning)
         {
             UpdateRace();
+            UpdateRaceInfo();
         }
     }
 
     private void UpdateRace()
     {
+        if (timer)
+        {
+            timeLeft -= Mathf.Clamp(Time.deltaTime, 0, float.MaxValue);
+        }
+
         if ((currentGate.isColliding && lastGate.passed) || (currentGate.isColliding && currentGateNum == 0))
         {
             Debug.Log("Passed Gate " + currentGateNum);
+
+            if (currentGateNum != 0 && currentGateNum != gateOrder.Count - 1)
+            {
+                timeLeft += timePerPoint;
+            }
+
             currentGate.passed = true;
             currentGateNum++;
             lastGateNum = currentGateNum - 1;
@@ -78,6 +97,19 @@ public class Race : MonoBehaviour
 
             currentGate = gateOrder[currentGateNum].GetComponent<Gate>();
             lastGate = gateOrder[lastGateNum].GetComponent<Gate>();
+        }
+    }
+
+    private void UpdateRaceInfo()
+    {
+        if (laps > 0)
+        {
+            raceInfo.lapsCurrent = raceInfo.lapsTotal - laps + 1;
+        }
+
+        if (timer)
+        {
+            raceInfo.timeLeft = timeLeft;
         }
     }
 
@@ -112,11 +144,42 @@ public class Race : MonoBehaviour
     {
         raceName = gameObject.name;
 
+        InitialiseRaceInfo();
         InitialiseStartLine();
         InitialiseFinishLine();
         InitialiseCheckpoints(numberOfCheckpoint);
 
         UpdateGateOrder();
+    }
+
+    private GameObject CreateGate(Mesh gateMesh, Material gateMaterial, string gateName, Transform parent)
+    {
+        GameObject gateObject = new GameObject();
+        gateObject.name = gateName;
+        gateObject.transform.SetParent(parent);
+
+        gateObject.AddComponent<BoxCollider>();
+        gateObject.GetComponent<BoxCollider>().isTrigger = true;
+
+        gateObject.AddComponent<MeshFilter>();
+        gateObject.GetComponent<MeshFilter>().mesh = gateMesh;
+
+        gateObject.AddComponent<MeshRenderer>();
+        gateObject.GetComponent<MeshRenderer>().material = gateMaterial;
+
+        gateObject.AddComponent<Gate>();
+
+        FitCollider(gateObject.GetComponent<Renderer>(), gateObject.GetComponent<BoxCollider>());
+
+        return gateObject;
+    }
+
+    public void InitialiseUI()
+    {
+        GameObject prefab = Resources.Load<GameObject>("Prefabs/Default UI");
+        GameObject newUI = Instantiate(prefab);
+        newUI.name = "Default UI";
+        newUI.GetComponent<DefaultRaceUI>().raceInfo = raceInfo;
     }
 
     private void InitialiseStartLine()
@@ -150,31 +213,18 @@ public class Race : MonoBehaviour
         }
     }
 
-    public void UpdateName(string newName)
+    private void InitialiseRaceInfo()
     {
-        gameObject.name = newName;
-    }
+        raceInfoObject = new GameObject();
+        raceInfoObject.name = "Race Info";
+        raceInfoObject.transform.SetParent(gameObject.transform);
+        raceInfoObject.AddComponent<RaceInfo>();
 
-    private GameObject CreateGate(Mesh gateMesh, Material gateMaterial, string gateName, Transform parent)
-    {
-        GameObject gateObject = new GameObject();
-        gateObject.name = gateName;
-        gateObject.transform.SetParent(parent);
+        raceInfo = raceInfoObject.GetComponent<RaceInfo>();
 
-        gateObject.AddComponent<BoxCollider>();
-        gateObject.GetComponent<BoxCollider>().isTrigger = true;
-
-        gateObject.AddComponent<MeshFilter>();
-        gateObject.GetComponent<MeshFilter>().mesh = gateMesh;
-
-        gateObject.AddComponent<MeshRenderer>();
-        gateObject.GetComponent<MeshRenderer>().material = gateMaterial;
-
-        gateObject.AddComponent<Gate>();
-
-        FitCollider(gateObject.GetComponent<Renderer>(), gateObject.GetComponent<BoxCollider>());
-
-        return gateObject;
+        raceInfo.lapsTotal = laps;
+        raceInfo.lapsCurrent = 1;
+        raceInfo.timeLeft = timeLeft;
     }
 
     public void AddCheckpoint(int index)
@@ -191,6 +241,11 @@ public class Race : MonoBehaviour
     {
         collider.center = renderer.localBounds.center;
         collider.size = renderer.localBounds.size;
+    }
+
+    public void UpdateName(string newName)
+    {
+        gameObject.name = newName;
     }
 
     public void UpdateGateOrder()

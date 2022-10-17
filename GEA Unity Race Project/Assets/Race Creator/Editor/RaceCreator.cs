@@ -6,11 +6,13 @@ public class RaceCreator : EditorWindow
     // Name
     string raceName = "New Race";
 
+    bool addUI = false;
+
     // Timer
     bool foldoutTimer = true;
     bool timer = false;
-    int initialTime = 0;
-    int timePerPoint = 0;
+    float initialTime = 0;
+    float timePerPoint = 0;
 
     // Laps
     int laps = 0;
@@ -39,7 +41,10 @@ public class RaceCreator : EditorWindow
         GUILayout.Label("Create a new race");
         EditorGUILayout.Space();
         raceName = EditorGUILayout.TextField("Race Name", raceName);
+
         EditorGUILayout.Space();
+
+        addUI = EditorGUILayout.Toggle("Add Default UI", addUI);
     }
 
     private void TimerGUI()
@@ -54,11 +59,11 @@ public class RaceCreator : EditorWindow
 
             if (timer)
             {
-                initialTime = Mathf.Clamp(EditorGUILayout.IntField("Initial Time", initialTime), 0, int.MaxValue);
+                initialTime = Mathf.Clamp(EditorGUILayout.FloatField("Initial Time", initialTime), 0, int.MaxValue);
                 EditorGUILayout.Space();
 
                 EditorGUILayout.LabelField("The amount of time a checkpoint gives");
-                timePerPoint = Mathf.Clamp(EditorGUILayout.IntField("Time per Checkpoint", timePerPoint), 0, int.MaxValue);
+                timePerPoint = Mathf.Clamp(EditorGUILayout.FloatField("Time per Checkpoint", timePerPoint), 0, int.MaxValue);
             }
         }
 
@@ -100,8 +105,12 @@ public class RaceCreator : EditorWindow
         newRaceComponent.initialTime = initialTime;
         newRaceComponent.timePerPoint = timePerPoint;
         newRaceComponent.laps = laps;
-        //newRaceComponent.checkpointNum = checkpointNum;
 
         newRaceComponent.CreateRace(checkpointNum);
+
+        if (addUI)
+        {
+            newRaceComponent.InitialiseUI();
+        }
     }
 }

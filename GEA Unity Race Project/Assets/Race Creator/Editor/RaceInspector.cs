@@ -16,10 +16,11 @@ public class RaceInspector : Editor
     // Timer
     bool foldoutTimer = true;
     bool timer;
-    int initialTime;
-    int timePerPoint;
+    float initialTime;
+    float timePerPoint;
 
     // Laps
+    bool foldoutLaps = true;
     int laps;
 
     // Starting Line
@@ -77,7 +78,8 @@ public class RaceInspector : Editor
     public override void OnInspectorGUI()
     {
         NameGUI();
-        OtherGUI();
+        PlayerGUI();
+        LapsGUI();
         TimerGUI();
         StartGUI();
         FinishGUI();
@@ -105,10 +107,10 @@ public class RaceInspector : Editor
 
             if (timer)
             {
-                initialTime = Mathf.Clamp(EditorGUILayout.IntField("Initial Time", initialTime), 0, int.MaxValue);
+                initialTime = Mathf.Clamp(EditorGUILayout.FloatField("Initial Time", initialTime), 0, float.MaxValue);
                 selectedRace.initialTime = initialTime;
 
-                timePerPoint = Mathf.Clamp(EditorGUILayout.IntField("Time per Checkpoint", timePerPoint), 0, int.MaxValue);
+                timePerPoint = Mathf.Clamp(EditorGUILayout.FloatField("Time per Checkpoint", timePerPoint), 0, float.MaxValue);
                 selectedRace.timePerPoint = timePerPoint;
             }
         }
@@ -118,7 +120,7 @@ public class RaceInspector : Editor
         EditorGUILayout.Space();
     }
 
-    private void OtherGUI()
+    private void PlayerGUI()
     {
         EditorGUILayout.BeginHorizontal();
 
@@ -136,18 +138,42 @@ public class RaceInspector : Editor
         }
 
         EditorGUILayout.EndHorizontal();
-
-        EditorGUI.BeginChangeCheck();
-        laps = Mathf.Clamp(EditorGUILayout.IntField("Number of Laps", laps), 0, int.MaxValue);
-        if (EditorGUI.EndChangeCheck())
+        
+        if (!playerCol)
         {
-            selectedRace.laps = laps;
+            EditorGUILayout.HelpBox("Player Collider is not assigned", MessageType.Warning);
         }
-        else
+    }
+
+    private void LapsGUI()
+    {
+        foldoutLaps = EditorGUILayout.BeginFoldoutHeaderGroup(foldoutLaps, "Laps");
+        EditorGUI.indentLevel++;
+
+        if (foldoutLaps)
         {
-            laps = selectedRace.laps;
+            EditorGUI.BeginChangeCheck();
+            laps = Mathf.Clamp(EditorGUILayout.IntField("Number of Laps", laps), 0, int.MaxValue);
+            if (EditorGUI.EndChangeCheck())
+            {
+                selectedRace.laps = laps;
+                selectedRace.raceInfo.lapsTotal = laps;
+            }
+            else
+            {
+                laps = selectedRace.laps;
+            }
+
+            if (GUILayout.Button("Combine Starting Line with Finish Line"))
+            {
+                finishLine.transform.parent = startLine.transform;
+                finishLine.transform.localPosition = Vector3.zero;
+            }
         }
 
+
+        EditorGUI.indentLevel--;
+        EditorGUILayout.EndFoldoutHeaderGroup();
         EditorGUILayout.Space();
     }
 
