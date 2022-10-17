@@ -23,6 +23,10 @@ public class RaceInspector : Editor
     bool foldoutLaps = true;
     int laps;
 
+    // Advanced Settings
+    bool foldoutSettings = true;
+    bool startOnAwake;
+
     // Starting Line
     bool foldoutStart = true;
     Mesh startModel;
@@ -59,6 +63,9 @@ public class RaceInspector : Editor
         // Laps
         laps = selectedRace.laps;
 
+        // Advanced Settings
+        startOnAwake = selectedRace.raceIsRunning;
+
         // Starting Line
         startLine = selectedRace.startLine;
         startModel = startLine.GetComponent<MeshFilter>().sharedMesh;
@@ -81,6 +88,7 @@ public class RaceInspector : Editor
         PlayerGUI();
         LapsGUI();
         TimerGUI();
+        SettingsGUI();
         StartGUI();
         FinishGUI();
         CheckpointGUI();
@@ -91,7 +99,7 @@ public class RaceInspector : Editor
     private void NameGUI()
     {
         raceName = EditorGUILayout.TextField("Race Name", raceName);
-        selectedRace.UpdateName(raceName);
+        selectedRace.changeName(raceName);
         EditorGUILayout.Space();
     }
 
@@ -104,11 +112,13 @@ public class RaceInspector : Editor
         {
             timer = EditorGUILayout.Toggle("Timer", timer);
             selectedRace.timer = timer;
+            selectedRace.raceInfo.timerIsOn = timer;
 
             if (timer)
             {
                 initialTime = Mathf.Clamp(EditorGUILayout.FloatField("Initial Time", initialTime), 0, float.MaxValue);
                 selectedRace.initialTime = initialTime;
+                selectedRace.raceInfo.timeLeft = initialTime;
 
                 timePerPoint = Mathf.Clamp(EditorGUILayout.FloatField("Time per Checkpoint", timePerPoint), 0, float.MaxValue);
                 selectedRace.timePerPoint = timePerPoint;
@@ -168,9 +178,27 @@ public class RaceInspector : Editor
             {
                 finishLine.transform.parent = startLine.transform;
                 finishLine.transform.localPosition = Vector3.zero;
+                finishLine.GetComponent<MeshRenderer>().enabled = false;
             }
         }
 
+
+        EditorGUI.indentLevel--;
+        EditorGUILayout.EndFoldoutHeaderGroup();
+        EditorGUILayout.Space();
+    }
+
+    private void SettingsGUI()
+    {
+        foldoutSettings = EditorGUILayout.BeginFoldoutHeaderGroup(foldoutSettings, "Advanced Settings");
+        EditorGUI.indentLevel++;
+
+        if (foldoutSettings)
+        {
+            EditorGUILayout.LabelField("Starts race as soon as scene loads");
+            startOnAwake = EditorGUILayout.Toggle("Start on Awake", startOnAwake);
+            selectedRace.raceIsRunning = startOnAwake;
+        }
 
         EditorGUI.indentLevel--;
         EditorGUILayout.EndFoldoutHeaderGroup();
@@ -375,7 +403,7 @@ public class RaceInspector : Editor
         DestroyImmediate(selectedRace.checkpoints[index]);
         selectedRace.checkpoints.RemoveAt(index);
         UpdateCheckpointName();
-        selectedRace.UpdateGateOrder();
+        selectedRace.reorderGateOrder();
 
         Debug.Log("Removed Checkpoint " + (index));
     }
