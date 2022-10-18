@@ -16,6 +16,7 @@ public class RaceInspector : Editor
     // Timer
     bool foldoutTimer = true;
     bool timer;
+    bool stopwatch;
     float initialTime;
     float timePerPoint;
 
@@ -57,6 +58,7 @@ public class RaceInspector : Editor
 
         // Timer
         timer = selectedRace.timer;
+        stopwatch = selectedRace.stopwatch;
         initialTime = selectedRace.initialTime;
         timePerPoint = selectedRace.timePerPoint;
 
@@ -93,7 +95,7 @@ public class RaceInspector : Editor
         FinishGUI();
         CheckpointGUI();
 
-        //base.OnInspectorGUI();
+        base.OnInspectorGUI();
     }
 
     private void NameGUI()
@@ -125,14 +127,27 @@ public class RaceInspector : Editor
 
         if (foldoutTimer)
         {
+            stopwatch = EditorGUILayout.Toggle("Stopwatch", stopwatch);
+            selectedRace.stopwatch = stopwatch;
+            if (stopwatch)
+            {
+                timer = false;
+            }
+
+            EditorGUILayout.Space();
+
             timer = EditorGUILayout.Toggle("Timer", timer);
             selectedRace.timer = timer;
+            if (timer)
+            {
+                stopwatch = false;
+            }
 
             if (timer)
             {
                 initialTime = Mathf.Clamp(EditorGUILayout.FloatField("Initial Time", initialTime), 0, float.MaxValue);
                 selectedRace.initialTime = initialTime;
-                selectedRace.raceInfo.timeLeft = initialTime;
+                selectedRace.raceInfo.time = initialTime;
 
                 timePerPoint = Mathf.Clamp(EditorGUILayout.FloatField("Time per Checkpoint", timePerPoint), 0, float.MaxValue);
                 selectedRace.timePerPoint = timePerPoint;
@@ -141,7 +156,7 @@ public class RaceInspector : Editor
             {
                 initialTime = 0;
                 selectedRace.initialTime = 0;
-                selectedRace.raceInfo.timeLeft = 0;
+                selectedRace.raceInfo.time = 0;
 
                 timePerPoint = 0;
                 selectedRace.timePerPoint = 0;
@@ -211,7 +226,7 @@ public class RaceInspector : Editor
         if (foldoutSettings)
         {
             EditorGUI.BeginChangeCheck();
-            startOnAwake = EditorGUILayout.Toggle("Start on Awake", startOnAwake);
+            startOnAwake = EditorGUILayout.Toggle("Start Race on Awake", startOnAwake);
             if (EditorGUI.EndChangeCheck())
             {
                 selectedRace.raceIsRunning = startOnAwake;

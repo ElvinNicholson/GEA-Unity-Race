@@ -11,7 +11,7 @@ public class DefaultRaceUI : MonoBehaviour
     {
         if (raceInfo.raceIsRunning)
         {
-            if (raceInfo.timeLeft > 0)
+            if (raceInfo.time > 0)
             {
                 timerText.enabled = true;
                 UpdateTimerText();
@@ -27,9 +27,9 @@ public class DefaultRaceUI : MonoBehaviour
 
     private void UpdateTimerText()
     {
-        float minutes = Mathf.FloorToInt(raceInfo.timeLeft / 60);
-        float seconds = Mathf.FloorToInt(raceInfo.timeLeft % 60);
-        float milliseconds = raceInfo.timeLeft % 1 * 1000;
+        float minutes = Mathf.FloorToInt(raceInfo.time / 60);
+        float seconds = Mathf.FloorToInt(raceInfo.time % 60);
+        float milliseconds = raceInfo.time % 1 * 1000;
 
         timerText.text = string.Format("{0:00}:{1:00}:{2:00}", minutes, seconds, milliseconds);
     }
