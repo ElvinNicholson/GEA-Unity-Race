@@ -7,29 +7,21 @@ public class DefaultRaceUI : MonoBehaviour
     [SerializeField] private Text timerText;
     [SerializeField] private Text lapText;
 
-    private void Start()
-    {
-        if (!raceInfo.timerIsOn)
-        {
-            timerText.enabled = false;
-        }
-
-        if (raceInfo.lapsTotal == 0)
-        {
-            lapText.enabled = false;
-        }
-    }
-
     private void Update()
     {
-        if (raceInfo.timeLeft > 0)
+        if (raceInfo.raceIsRunning)
         {
-            UpdateTimerText();
-        }
+            if (raceInfo.timeLeft > 0)
+            {
+                timerText.enabled = true;
+                UpdateTimerText();
+            }
 
-        if (raceInfo.lapsTotal > 0)
-        {
-            UpdateLapText();
+            if (raceInfo.lapsTotal > 1)
+            {
+                lapText.enabled = true;
+                UpdateLapText();
+            }
         }
     }
 

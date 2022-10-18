@@ -74,7 +74,7 @@ public class RaceCreator : EditorWindow
 
     private void LapsGUI()
     {
-        laps = Mathf.Clamp(EditorGUILayout.IntField("Number of Laps", laps), 0, int.MaxValue);
+        laps = Mathf.Clamp(EditorGUILayout.IntField("Number of Laps", laps), 1, int.MaxValue);
 
         EditorGUILayout.Space();
     }
@@ -104,7 +104,7 @@ public class RaceCreator : EditorWindow
         newRaceComponent.timer = timer;
         newRaceComponent.initialTime = initialTime;
         newRaceComponent.timePerPoint = timePerPoint;
-        newRaceComponent.laps = laps;
+        newRaceComponent.lapsTotal = laps;
 
         newRaceComponent.CreateRace(checkpointNum);
 

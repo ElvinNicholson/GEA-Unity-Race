@@ -11,6 +11,5 @@ public class RaceInfo : MonoBehaviour
     public int lapsCurrent;
 
     // Timer
-    public bool timerIsOn;
     public float timeLeft;
 }

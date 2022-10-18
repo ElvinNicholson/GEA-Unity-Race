@@ -21,7 +21,8 @@ public class Race : MonoBehaviour
     private float timeLeft;
 
     // Laps
-    public int laps = 0;
+    public int lapsTotal;
+    public int lapsCurrent = 1;
 
     // Starting Line
     public GameObject startLine;
@@ -50,11 +51,7 @@ public class Race : MonoBehaviour
 
     private void Start()
     {
-        currentGate = gateOrder[currentGateNum].GetComponent<Gate>();
-        lastGate = gateOrder[lastGateNum].GetComponent<Gate>();
-
-        raceInfo.timerIsOn = timer;
-        timeLeft = initialTime;
+        resetRace();
     }
 
     private void Update()
@@ -117,9 +114,8 @@ public class Race : MonoBehaviour
 
         raceInfo = raceInfoObject.GetComponent<RaceInfo>();
 
-        raceInfo.lapsTotal = laps;
-        raceInfo.lapsCurrent = 1;
-        raceInfo.timerIsOn = timer;
+        raceInfo.lapsTotal = lapsTotal;
+        raceInfo.lapsCurrent = lapsCurrent;
         raceInfo.timeLeft = timeLeft;
     }
 
@@ -131,27 +127,34 @@ public class Race : MonoBehaviour
 
             if (timeLeft <= 0)
             {
+                
                 timeLeft = 0;
                 raceIsRunning = false;
                 raceIsWon = false;
+                
+                Debug.Log("Ran out of time!");
                 UpdateRaceInfo();
                 return;
             }
         }
 
+        // Mark the current gate as passed if the last gate is passed or its the first gate
         if ((currentGate.isColliding && lastGate.passed) || (currentGate.isColliding && currentGateNum == 0))
         {
             Debug.Log("Passed Gate " + currentGateNum);
 
-            if (currentGateNum != 0 && currentGateNum != gateOrder.Count - 1)
-            {
-                timeLeft += timePerPoint;
-            }
-
+            // Mark current gate as passed
             currentGate.passed = true;
             currentGateNum++;
             lastGateNum = currentGateNum - 1;
 
+            // Add time when passing checkpoint
+            if (currentGateNum != 0 && currentGateNum != gateOrder.Count - 1 && timer)
+            {
+                timeLeft += timePerPoint;
+            }
+
+            // Check if the current gate is the finish line
             if (currentGateNum == gateOrder.Count)
             {
                 FinishLap();
@@ -171,10 +174,7 @@ public class Race : MonoBehaviour
 
     private void UpdateRaceInfo()
     {
-        if (laps > 0)
-        {
-            raceInfo.lapsCurrent = raceInfo.lapsTotal - laps + 1;
-        }
+        raceInfo.lapsCurrent = lapsCurrent;
 
         if (timer)
         {
@@ -188,27 +188,18 @@ public class Race : MonoBehaviour
     private void FinishLap()
     {
         Debug.Log("Lap Finished");
-        if (laps != 0)
-        {
-            laps--;
+        lapsCurrent++;
 
-            if (laps == 0)
-            {
-                Debug.Log("Race Completed!");
-                raceIsRunning = false;
-            }
-
-            currentGateNum = 0;
-
-            foreach (GameObject gate in gateOrder)
-            {
-                gate.GetComponent<Gate>().passed = false;
-            }
-        }
-        else
+        if (lapsCurrent > lapsTotal)
         {
             Debug.Log("Race Completed!");
             raceIsRunning = false;
+        }
+
+        currentGateNum = 0;
+        foreach (GameObject gate in gateOrder)
+        {
+            gate.GetComponent<Gate>().passed = false;
         }
     }
 
@@ -284,6 +275,9 @@ public class Race : MonoBehaviour
         gameObject.name = newName;
     }
 
+    /// <summary>
+    /// Arranges gateOrder list (Starting Line -> Checkpoints -> Finish Line)
+    /// </summary>
     public void reorderGateOrder()
     {
         gateOrder.Clear();
@@ -303,9 +297,26 @@ public class Race : MonoBehaviour
     /// <summary>
     /// Starts the race
     /// </summary>
-    public bool startRace()
+    public void startRace()
     {
         raceIsRunning = true;
-        return true;
+    }
+
+    /// <summary>
+    /// Resets the race, call startRace() to start the race
+    /// </summary>
+    public void resetRace()
+    {
+        lapsCurrent = 1;
+        timeLeft = initialTime;
+        raceIsWon = false;
+
+        currentGateNum = 0;
+        currentGate = gateOrder[currentGateNum].GetComponent<Gate>();
+
+        lastGateNum = 0;
+        lastGate = gateOrder[lastGateNum].GetComponent<Gate>();
+
+        UpdateRaceInfo();
     }
 }

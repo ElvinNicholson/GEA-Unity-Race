@@ -61,7 +61,7 @@ public class RaceInspector : Editor
         timePerPoint = selectedRace.timePerPoint;
 
         // Laps
-        laps = selectedRace.laps;
+        laps = selectedRace.lapsTotal;
 
         // Advanced Settings
         startOnAwake = selectedRace.raceIsRunning;
@@ -100,6 +100,21 @@ public class RaceInspector : Editor
     {
         raceName = EditorGUILayout.TextField("Race Name", raceName);
         selectedRace.changeName(raceName);
+
+        EditorGUILayout.BeginHorizontal();
+
+        if (GUILayout.Button("Start Race"))
+        {
+            selectedRace.startRace();
+        }
+
+        if (GUILayout.Button("Restart Race"))
+        {
+            selectedRace.resetRace();
+            selectedRace.startRace();
+        }
+
+        EditorGUILayout.EndHorizontal();
         EditorGUILayout.Space();
     }
 
@@ -112,7 +127,6 @@ public class RaceInspector : Editor
         {
             timer = EditorGUILayout.Toggle("Timer", timer);
             selectedRace.timer = timer;
-            selectedRace.raceInfo.timerIsOn = timer;
 
             if (timer)
             {
@@ -122,6 +136,15 @@ public class RaceInspector : Editor
 
                 timePerPoint = Mathf.Clamp(EditorGUILayout.FloatField("Time per Checkpoint", timePerPoint), 0, float.MaxValue);
                 selectedRace.timePerPoint = timePerPoint;
+            }
+            else
+            {
+                initialTime = 0;
+                selectedRace.initialTime = 0;
+                selectedRace.raceInfo.timeLeft = 0;
+
+                timePerPoint = 0;
+                selectedRace.timePerPoint = 0;
             }
         }
 
@@ -163,25 +186,17 @@ public class RaceInspector : Editor
         if (foldoutLaps)
         {
             EditorGUI.BeginChangeCheck();
-            laps = Mathf.Clamp(EditorGUILayout.IntField("Number of Laps", laps), 0, int.MaxValue);
+            laps = Mathf.Clamp(EditorGUILayout.IntField("Number of Laps", laps), 1, int.MaxValue);
             if (EditorGUI.EndChangeCheck())
             {
-                selectedRace.laps = laps;
+                selectedRace.lapsTotal = laps;
                 selectedRace.raceInfo.lapsTotal = laps;
             }
             else
             {
-                laps = selectedRace.laps;
-            }
-
-            if (GUILayout.Button("Combine Starting Line with Finish Line"))
-            {
-                finishLine.transform.parent = startLine.transform;
-                finishLine.transform.localPosition = Vector3.zero;
-                finishLine.GetComponent<MeshRenderer>().enabled = false;
+                laps = selectedRace.lapsTotal;
             }
         }
-
 
         EditorGUI.indentLevel--;
         EditorGUILayout.EndFoldoutHeaderGroup();
@@ -195,9 +210,19 @@ public class RaceInspector : Editor
 
         if (foldoutSettings)
         {
-            EditorGUILayout.LabelField("Starts race as soon as scene loads");
+            EditorGUI.BeginChangeCheck();
             startOnAwake = EditorGUILayout.Toggle("Start on Awake", startOnAwake);
-            selectedRace.raceIsRunning = startOnAwake;
+            if (EditorGUI.EndChangeCheck())
+            {
+                selectedRace.raceIsRunning = startOnAwake;
+            }
+
+            if (GUILayout.Button("Combine Starting Line with Finish Line"))
+            {
+                finishLine.transform.parent = startLine.transform;
+                finishLine.transform.localPosition = Vector3.zero;
+                finishLine.GetComponent<MeshRenderer>().enabled = false;
+            }
         }
 
         EditorGUI.indentLevel--;
