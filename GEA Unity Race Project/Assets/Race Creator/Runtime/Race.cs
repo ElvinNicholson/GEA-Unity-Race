@@ -80,16 +80,16 @@ public class Race : MonoBehaviour
         {
             Debug.Log("Passed Gate " + currentGateNum);
 
-            // Mark current gate as passed
-            currentGate.passed = true;
-            currentGateNum++;
-            lastGateNum = currentGateNum - 1;
-
             // Add time when passing checkpoint
             if (currentGateNum != 0 && currentGateNum != gateOrder.Count - 1 && timer)
             {
                 time += timePerPoint;
             }
+
+            // Mark current gate as passed
+            currentGate.passed = true;
+            currentGateNum++;
+            lastGateNum = currentGateNum - 1;
 
             // Check if the current gate is the finish line
             if (currentGateNum == gateOrder.Count)

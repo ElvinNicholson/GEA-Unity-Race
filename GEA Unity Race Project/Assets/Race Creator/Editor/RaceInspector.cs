@@ -132,34 +132,28 @@ public class RaceInspector : Editor
             if (stopwatch)
             {
                 timer = false;
+
+                initialTime = 0;
+                selectedRace.initialTime = 0;
+
+                timePerPoint = 0;
+                selectedRace.timePerPoint = 0;
             }
 
             EditorGUILayout.Space();
 
             timer = EditorGUILayout.Toggle("Timer", timer);
             selectedRace.timer = timer;
+
             if (timer)
             {
                 stopwatch = false;
-            }
 
-            if (timer)
-            {
                 initialTime = Mathf.Clamp(EditorGUILayout.FloatField("Initial Time", initialTime), 0, float.MaxValue);
                 selectedRace.initialTime = initialTime;
-                selectedRace.raceInfo.time = initialTime;
 
                 timePerPoint = Mathf.Clamp(EditorGUILayout.FloatField("Time per Checkpoint", timePerPoint), 0, float.MaxValue);
                 selectedRace.timePerPoint = timePerPoint;
-            }
-            else
-            {
-                initialTime = 0;
-                selectedRace.initialTime = 0;
-                selectedRace.raceInfo.time = 0;
-
-                timePerPoint = 0;
-                selectedRace.timePerPoint = 0;
             }
         }
 

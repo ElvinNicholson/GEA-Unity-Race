@@ -10,6 +10,7 @@ public class RaceCreator : EditorWindow
 
     // Timer
     bool foldoutTimer = true;
+    bool stopwatch = false;
     bool timer = false;
     float initialTime = 0;
     float timePerPoint = 0;
@@ -54,15 +55,26 @@ public class RaceCreator : EditorWindow
 
         if (foldoutTimer)
         {
+            EditorGUILayout.LabelField("Adds a stopwatch to the race");
+            stopwatch = EditorGUILayout.Toggle("Stopwatch", stopwatch);
+            if (stopwatch)
+            {
+                timer = false;
+
+                initialTime = 0;
+                timePerPoint = 0;
+            }
+
+            EditorGUILayout.Space();
+
             EditorGUILayout.LabelField("Adds a timer to the race");
             timer = EditorGUILayout.Toggle("Timer", timer);
 
             if (timer)
             {
-                initialTime = Mathf.Clamp(EditorGUILayout.FloatField("Initial Time", initialTime), 0, int.MaxValue);
-                EditorGUILayout.Space();
+                stopwatch = false;
 
-                EditorGUILayout.LabelField("The amount of time a checkpoint gives");
+                initialTime = Mathf.Clamp(EditorGUILayout.FloatField("Initial Time", initialTime), 0, int.MaxValue);
                 timePerPoint = Mathf.Clamp(EditorGUILayout.FloatField("Time per Checkpoint", timePerPoint), 0, int.MaxValue);
             }
         }
@@ -102,6 +114,7 @@ public class RaceCreator : EditorWindow
 
         Race newRaceComponent = newRace.GetComponent<Race>();
         newRaceComponent.timer = timer;
+        newRaceComponent.stopwatch = stopwatch;
         newRaceComponent.initialTime = initialTime;
         newRaceComponent.timePerPoint = timePerPoint;
         newRaceComponent.lapsTotal = laps;
