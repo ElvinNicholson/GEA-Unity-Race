@@ -95,7 +95,7 @@ public class RaceInspector : Editor
         FinishGUI();
         CheckpointGUI();
 
-        base.OnInspectorGUI();
+        //base.OnInspectorGUI();
     }
 
     private void NameGUI()

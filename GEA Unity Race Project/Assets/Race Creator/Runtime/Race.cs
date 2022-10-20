@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class Race : MonoBehaviour
 {
-    // Race
-    public bool raceIsRunning;
-    public bool raceIsWon;
-
     // Name
     public string raceName;
 
@@ -15,6 +11,7 @@ public class Race : MonoBehaviour
     public Collider playerCol;
 
     // Timer
+    private bool timeIsOn = false;
     public bool timer = false;
     public bool stopwatch = false;
     public float initialTime = 0;
@@ -40,13 +37,16 @@ public class Race : MonoBehaviour
     // Gates
     public List<GameObject> gateOrder = new List<GameObject>();
 
-    Gate currentGate;
-    int currentGateNum = 0;
+    private Gate currentGate;
+    private int currentGateNum = 0;
 
-    Gate lastGate;
-    int lastGateNum = 0;
+    private Gate lastGate;
+    private int lastGateNum = 0;
 
     // Race Info
+    public bool raceIsRunning;
+    public bool raceIsWon;
+
     public GameObject raceInfoObject;
     public RaceInfo raceInfo;
 
@@ -66,11 +66,11 @@ public class Race : MonoBehaviour
 
     private void UpdateRace()
     {
-        if (timer)
+        if (timer && timeIsOn)
         {
             UpdateTimer();
         }
-        else if (stopwatch)
+        else if (stopwatch && timeIsOn)
         {
             UpdateStopwatch();
         }
@@ -80,8 +80,10 @@ public class Race : MonoBehaviour
         {
             Debug.Log("Passed Gate " + currentGateNum);
 
+            timeIsOn = true;
+
             // Add time when passing checkpoint
-            if (currentGateNum != 0 && currentGateNum != gateOrder.Count - 1 && timer)
+            if (currentGateNum != 0 && timer)
             {
                 time += timePerPoint;
             }
@@ -321,7 +323,8 @@ public class Race : MonoBehaviour
     public void resetRace()
     {
         lapsCurrent = 1;
-        
+        timeIsOn = false;
+
         if (timer)
         {
             time = initialTime;
