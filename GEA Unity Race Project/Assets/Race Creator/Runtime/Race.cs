@@ -16,11 +16,6 @@ public class Race : MonoBehaviour
     public bool stopwatch = false;
     public float initialTime = 0;
     public float timePerPoint = 0;
-    //public float time;
-
-    // Laps
-    //public int lapsTotal;
-    //public int lapsCurrent = 1;
 
     // Starting Line
     public GameObject startLine;
@@ -43,10 +38,6 @@ public class Race : MonoBehaviour
     private Gate lastGate;
     private int lastGateNum = 0;
 
-    // Race Info
-    //public bool raceIsRunning;
-    //public bool raceIsWon;
-
     public GameObject raceInfoObject;
     public RaceInfo raceInfo;
 
@@ -60,7 +51,6 @@ public class Race : MonoBehaviour
         if (raceInfo.raceIsRunning)
         {
             UpdateRace();
-            UpdateRaceInfo();
         }
     }
 
@@ -101,7 +91,6 @@ public class Race : MonoBehaviour
                 if (!raceInfo.raceIsRunning)
                 {
                     raceInfo.raceIsWon = true;
-                    UpdateRaceInfo();
                     return;
                 }
             }
@@ -109,19 +98,6 @@ public class Race : MonoBehaviour
             currentGate = gateOrder[currentGateNum].GetComponent<Gate>();
             lastGate = gateOrder[lastGateNum].GetComponent<Gate>();
         }
-    }
-
-    private void UpdateRaceInfo()
-    {
-        //raceInfo.lapsCurrent = lapsCurrent;
-
-        //if (timer || stopwatch)
-        //{
-        //    raceInfo.time = time;
-        //}
-        //
-        //raceInfo.raceIsWon = raceIsWon;
-        //raceInfo.raceIsRunning = raceIsRunning;
     }
 
     private void UpdateTimer()
@@ -135,7 +111,6 @@ public class Race : MonoBehaviour
             raceInfo.raceIsWon = false;
 
             Debug.Log("Ran out of time!");
-            UpdateRaceInfo();
         }
     }
 
@@ -152,7 +127,6 @@ public class Race : MonoBehaviour
         GameObject prefab = Resources.Load<GameObject>("Prefabs/Default UI");
         GameObject newUI = Instantiate(prefab);
         newUI.name = "Default UI";
-        //ewUI.GetComponent<DefaultRaceUI>().raceInfo = raceInfo;
     }
 
     private void InitialiseStartLine()
@@ -194,10 +168,6 @@ public class Race : MonoBehaviour
         raceInfoObject.AddComponent<RaceInfo>();
 
         raceInfo = raceInfoObject.GetComponent<RaceInfo>();
-
-        //raceInfo.lapsTotal = lapsTotal;
-        //raceInfo.lapsCurrent = lapsCurrent;
-        //raceInfo.time = time;
     }
 
     private void FinishLap()
@@ -341,7 +311,5 @@ public class Race : MonoBehaviour
 
         lastGateNum = 0;
         lastGate = gateOrder[lastGateNum].GetComponent<Gate>();
-
-        UpdateRaceInfo();
     }
 }
