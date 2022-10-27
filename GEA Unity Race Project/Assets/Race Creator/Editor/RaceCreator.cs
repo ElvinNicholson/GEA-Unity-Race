@@ -113,13 +113,13 @@ public class RaceCreator : EditorWindow
         newRace.AddComponent<Race>();
 
         Race newRaceComponent = newRace.GetComponent<Race>();
+        newRaceComponent.CreateRace(checkpointNum);
+
         newRaceComponent.timer = timer;
         newRaceComponent.stopwatch = stopwatch;
         newRaceComponent.initialTime = initialTime;
         newRaceComponent.timePerPoint = timePerPoint;
-        newRaceComponent.lapsTotal = laps;
-
-        newRaceComponent.CreateRace(checkpointNum);
+        newRaceComponent.raceInfo.lapsTotal = laps;
 
         if (addUI)
         {

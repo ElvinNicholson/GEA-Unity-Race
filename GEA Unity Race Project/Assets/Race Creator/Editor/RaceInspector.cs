@@ -63,10 +63,10 @@ public class RaceInspector : Editor
         timePerPoint = selectedRace.timePerPoint;
 
         // Laps
-        laps = selectedRace.lapsTotal;
+        laps = selectedRace.raceInfo.lapsTotal;
 
         // Advanced Settings
-        startOnAwake = selectedRace.raceIsRunning;
+        startOnAwake = selectedRace.raceInfo.raceIsRunning;
 
         // Starting Line
         startLine = selectedRace.startLine;
@@ -198,12 +198,12 @@ public class RaceInspector : Editor
             laps = Mathf.Clamp(EditorGUILayout.IntField("Number of Laps", laps), 1, int.MaxValue);
             if (EditorGUI.EndChangeCheck())
             {
-                selectedRace.lapsTotal = laps;
+                //selectedRace.lapsTotal = laps;
                 selectedRace.raceInfo.lapsTotal = laps;
             }
             else
             {
-                laps = selectedRace.lapsTotal;
+                laps = selectedRace.raceInfo.lapsTotal;
             }
         }
 
@@ -223,7 +223,7 @@ public class RaceInspector : Editor
             startOnAwake = EditorGUILayout.Toggle("Start Race on Awake", startOnAwake);
             if (EditorGUI.EndChangeCheck())
             {
-                selectedRace.raceIsRunning = startOnAwake;
+                selectedRace.raceInfo.raceIsRunning = startOnAwake;
             }
 
             if (GUILayout.Button("Combine Starting Line with Finish Line"))

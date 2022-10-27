@@ -3,9 +3,14 @@ using UnityEngine.UI;
 
 public class DefaultRaceUI : MonoBehaviour
 {
-    public RaceInfo raceInfo;
+    [SerializeField] private RaceInfo raceInfo;
     [SerializeField] private Text timerText;
     [SerializeField] private Text lapText;
+
+    private void Start()
+    {
+        findRaceInfo();
+    }
 
     private void Update()
     {
@@ -37,5 +42,19 @@ public class DefaultRaceUI : MonoBehaviour
     private void UpdateLapText()
     {
         lapText.text = string.Format("Lap {0}/{1}", raceInfo.lapsCurrent, raceInfo.lapsTotal);
+    }
+
+    private void findRaceInfo()
+    {
+        raceInfo = FindObjectOfType<RaceInfo>();
+
+        if (raceInfo)
+        {
+            Debug.Log("RaceInfo found");
+        }
+        else
+        {
+            Debug.Log("RaceInfo not found");
+        }
     }
 }

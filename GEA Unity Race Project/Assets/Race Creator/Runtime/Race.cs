@@ -16,11 +16,11 @@ public class Race : MonoBehaviour
     public bool stopwatch = false;
     public float initialTime = 0;
     public float timePerPoint = 0;
-    public float time;
+    //public float time;
 
     // Laps
-    public int lapsTotal;
-    public int lapsCurrent = 1;
+    //public int lapsTotal;
+    //public int lapsCurrent = 1;
 
     // Starting Line
     public GameObject startLine;
@@ -44,8 +44,8 @@ public class Race : MonoBehaviour
     private int lastGateNum = 0;
 
     // Race Info
-    public bool raceIsRunning;
-    public bool raceIsWon;
+    //public bool raceIsRunning;
+    //public bool raceIsWon;
 
     public GameObject raceInfoObject;
     public RaceInfo raceInfo;
@@ -57,7 +57,7 @@ public class Race : MonoBehaviour
 
     private void Update()
     {
-        if (raceIsRunning)
+        if (raceInfo.raceIsRunning)
         {
             UpdateRace();
             UpdateRaceInfo();
@@ -85,7 +85,7 @@ public class Race : MonoBehaviour
             // Add time when passing checkpoint
             if (currentGateNum != 0 && timer)
             {
-                time += timePerPoint;
+                raceInfo.time += timePerPoint;
             }
 
             // Mark current gate as passed
@@ -98,9 +98,9 @@ public class Race : MonoBehaviour
             {
                 FinishLap();
 
-                if (!raceIsRunning)
+                if (!raceInfo.raceIsRunning)
                 {
-                    raceIsWon = true;
+                    raceInfo.raceIsWon = true;
                     UpdateRaceInfo();
                     return;
                 }
@@ -113,26 +113,26 @@ public class Race : MonoBehaviour
 
     private void UpdateRaceInfo()
     {
-        raceInfo.lapsCurrent = lapsCurrent;
+        //raceInfo.lapsCurrent = lapsCurrent;
 
-        if (timer || stopwatch)
-        {
-            raceInfo.time = time;
-        }
-
-        raceInfo.raceIsWon = raceIsWon;
-        raceInfo.raceIsRunning = raceIsRunning;
+        //if (timer || stopwatch)
+        //{
+        //    raceInfo.time = time;
+        //}
+        //
+        //raceInfo.raceIsWon = raceIsWon;
+        //raceInfo.raceIsRunning = raceIsRunning;
     }
 
     private void UpdateTimer()
     {
-        time -= Time.deltaTime;
+        raceInfo.time -= Time.deltaTime;
 
-        if (time <= 0)
+        if (raceInfo.time <= 0)
         {
-            time = 0;
-            raceIsRunning = false;
-            raceIsWon = false;
+            raceInfo.time = 0;
+            raceInfo.raceIsRunning = false;
+            raceInfo.raceIsWon = false;
 
             Debug.Log("Ran out of time!");
             UpdateRaceInfo();
@@ -141,7 +141,7 @@ public class Race : MonoBehaviour
 
     private void UpdateStopwatch()
     {
-        time += Time.deltaTime;
+        raceInfo.time += Time.deltaTime;
     }
 
     /// <summary>
@@ -152,7 +152,7 @@ public class Race : MonoBehaviour
         GameObject prefab = Resources.Load<GameObject>("Prefabs/Default UI");
         GameObject newUI = Instantiate(prefab);
         newUI.name = "Default UI";
-        newUI.GetComponent<DefaultRaceUI>().raceInfo = raceInfo;
+        //ewUI.GetComponent<DefaultRaceUI>().raceInfo = raceInfo;
     }
 
     private void InitialiseStartLine()
@@ -195,20 +195,20 @@ public class Race : MonoBehaviour
 
         raceInfo = raceInfoObject.GetComponent<RaceInfo>();
 
-        raceInfo.lapsTotal = lapsTotal;
-        raceInfo.lapsCurrent = lapsCurrent;
-        raceInfo.time = time;
+        //raceInfo.lapsTotal = lapsTotal;
+        //raceInfo.lapsCurrent = lapsCurrent;
+        //raceInfo.time = time;
     }
 
     private void FinishLap()
     {
         Debug.Log("Lap Finished");
-        lapsCurrent++;
+        raceInfo.lapsCurrent++;
 
-        if (lapsCurrent > lapsTotal)
+        if (raceInfo.lapsCurrent > raceInfo.lapsTotal)
         {
             Debug.Log("Race Completed!");
-            raceIsRunning = false;
+            raceInfo.raceIsRunning = false;
         }
 
         currentGateNum = 0;
@@ -314,7 +314,7 @@ public class Race : MonoBehaviour
     /// </summary>
     public void startRace()
     {
-        raceIsRunning = true;
+        raceInfo.raceIsRunning = true;
     }
 
     /// <summary>
@@ -322,19 +322,19 @@ public class Race : MonoBehaviour
     /// </summary>
     public void resetRace()
     {
-        lapsCurrent = 1;
+        raceInfo.lapsCurrent = 1;
         timeIsOn = false;
 
         if (timer)
         {
-            time = initialTime;
+            raceInfo.time = initialTime;
         }
         else if (stopwatch)
         {
-            time = 0;
+            raceInfo.time = 0;
         }
 
-        raceIsWon = false;
+        raceInfo.raceIsWon = false;
 
         currentGateNum = 0;
         currentGate = gateOrder[currentGateNum].GetComponent<Gate>();
