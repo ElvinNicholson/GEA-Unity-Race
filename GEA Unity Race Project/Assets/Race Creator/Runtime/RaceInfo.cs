@@ -12,4 +12,6 @@ public class RaceInfo : MonoBehaviour
 
     // Timer
     public float time;
+
+    public Transform currentGate;
 }
