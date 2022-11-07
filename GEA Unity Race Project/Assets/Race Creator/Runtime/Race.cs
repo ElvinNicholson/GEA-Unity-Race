@@ -26,7 +26,9 @@ public class Race : MonoBehaviour
     // Checkpoints
     public GameObject checkpointParent;
     public Mesh checkpointModel;
+    public Mesh nextCheckpointModel;
     public Material checkpointMat;
+    public Material nextCheckpointMat;
     public List<GameObject> checkpoints = new List<GameObject>();
 
     // Gates
@@ -96,9 +98,11 @@ public class Race : MonoBehaviour
                     return;
                 }
             }
-
+             
             currentGate = gateOrder[currentGateNum].GetComponent<Gate>();
             lastGate = gateOrder[lastGateNum].GetComponent<Gate>();
+
+            changeNextCheckpointVisual();
         }
     }
 
@@ -315,5 +319,24 @@ public class Race : MonoBehaviour
 
         lastGateNum = 0;
         lastGate = gateOrder[lastGateNum].GetComponent<Gate>();
+    }
+
+    private void changeNextCheckpointVisual()
+    {
+        if (lastGateNum != 0 && lastGateNum != gateOrder.Count)
+        {
+            Debug.Log(lastGateNum);
+            lastGate.GetComponent<MeshFilter>().mesh = checkpointModel;
+            lastGate.GetComponent<MeshRenderer>().material = checkpointMat;
+            FitCollider(lastGate.GetComponent<Renderer>(), lastGate.GetComponent<BoxCollider>());
+        }
+
+        if (currentGateNum != 0 && currentGateNum != gateOrder.Count)
+        {
+            Debug.Log(currentGateNum);
+            currentGate.GetComponent<MeshFilter>().mesh = nextCheckpointModel;
+            currentGate.GetComponent<MeshRenderer>().material = nextCheckpointMat;
+            FitCollider(currentGate.GetComponent<Renderer>(), currentGate.GetComponent<BoxCollider>());
+        }
     }
 }

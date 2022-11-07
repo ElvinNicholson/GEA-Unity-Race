@@ -43,7 +43,9 @@ public class RaceInspector : Editor
     // Checkpoints
     bool foldoutCheckpoint = true;
     Mesh checkpointModel;
+    Mesh nextCheckpointModel;
     Material checkpointMat;
+    Material nextCheckpointMat;
     List<GameObject> checkpoints;
 
     private void OnEnable()
@@ -82,6 +84,9 @@ public class RaceInspector : Editor
         checkpoints = selectedRace.checkpoints;
         checkpointModel = selectedRace.checkpointModel;
         checkpointMat = selectedRace.checkpointMat;
+
+        nextCheckpointModel = selectedRace.nextCheckpointModel;
+        nextCheckpointMat = selectedRace.nextCheckpointMat;
     }
 
     public override void OnInspectorGUI()
@@ -250,16 +255,25 @@ public class RaceInspector : Editor
 
             // Mesh
             EditorGUILayout.PrefixLabel("Starting Line Mesh");
+            EditorGUI.BeginChangeCheck();
             startModel = (Mesh)EditorGUILayout.ObjectField(startModel, typeof(Mesh), true);
-            selectedRace.startLine.GetComponent<MeshFilter>().mesh = startModel;
+            if (EditorGUI.EndChangeCheck())
+            {
+                selectedRace.startLine.GetComponent<MeshFilter>().mesh = startModel;
+                selectedRace.FitCollider(startLine.GetComponent<Renderer>(), startLine.GetComponent<BoxCollider>());
+            }
 
             EditorGUILayout.EndHorizontal();
             EditorGUILayout.BeginHorizontal();
 
             // Material
             EditorGUILayout.PrefixLabel("Starting Line Material");
+            EditorGUI.BeginChangeCheck();
             startMat = (Material)EditorGUILayout.ObjectField(startMat, typeof(Material), true);
-            selectedRace.startLine.GetComponent<MeshRenderer>().material = startMat;
+            if (EditorGUI.EndChangeCheck())
+            {
+                selectedRace.startLine.GetComponent<MeshRenderer>().material = startMat;
+            }
 
             EditorGUILayout.EndHorizontal();
             EditorGUILayout.BeginHorizontal();
@@ -267,18 +281,6 @@ public class RaceInspector : Editor
             // GameObject
             EditorGUILayout.PrefixLabel("Starting Line Object");
             startLine = (GameObject)EditorGUILayout.ObjectField(startLine, typeof(GameObject), true);
-
-            EditorGUILayout.EndHorizontal();
-            EditorGUILayout.BeginHorizontal();
-
-            // Box Collider
-
-            EditorGUILayout.PrefixLabel("Box Collider");
-
-            if (GUILayout.Button("Fit to Mesh"))
-            {
-                selectedRace.FitCollider(startLine.GetComponent<Renderer>(), startLine.GetComponent<BoxCollider>());
-            }
 
             EditorGUILayout.EndHorizontal();
         }
@@ -299,16 +301,27 @@ public class RaceInspector : Editor
 
             // Model
             EditorGUILayout.PrefixLabel("Finish Line Mesh");
+            EditorGUI.BeginChangeCheck();
             finishModel = (Mesh)EditorGUILayout.ObjectField(finishModel, typeof(Mesh), true);
-            selectedRace.finishLine.GetComponent<MeshFilter>().mesh = finishModel;
+            if (EditorGUI.EndChangeCheck())
+            {
+                selectedRace.finishLine.GetComponent<MeshFilter>().mesh = finishModel;
+                selectedRace.FitCollider(finishLine.GetComponent<Renderer>(), finishLine.GetComponent<BoxCollider>());
+            }
+            
 
             EditorGUILayout.EndHorizontal();
             EditorGUILayout.BeginHorizontal();
 
             // Material
             EditorGUILayout.PrefixLabel("Finish Line Material");
+            EditorGUI.BeginChangeCheck();
             finishMat = (Material)EditorGUILayout.ObjectField(finishMat, typeof(Material), true);
-            selectedRace.finishLine.GetComponent<MeshRenderer>().material = finishMat;
+            if (EditorGUI.EndChangeCheck())
+            {
+                selectedRace.finishLine.GetComponent<MeshRenderer>().material = finishMat;
+            }
+            
 
             EditorGUILayout.EndHorizontal();
             EditorGUILayout.BeginHorizontal();
@@ -316,18 +329,6 @@ public class RaceInspector : Editor
             // GameObject
             EditorGUILayout.PrefixLabel("Finish Line Object");
             finishLine = (GameObject)EditorGUILayout.ObjectField(finishLine, typeof(GameObject), true);
-
-            EditorGUILayout.EndHorizontal();
-            EditorGUILayout.BeginHorizontal();
-
-            // Box Collider
-
-            EditorGUILayout.PrefixLabel("Box Collider");
-
-            if (GUILayout.Button("Fit to Mesh"))
-            {
-                selectedRace.FitCollider(finishLine.GetComponent<Renderer>(), finishLine.GetComponent<BoxCollider>());
-            }
 
             EditorGUILayout.EndHorizontal();
         }
@@ -355,6 +356,7 @@ public class RaceInspector : Editor
                 foreach (GameObject cpObject in checkpoints)
                 {
                     cpObject.GetComponent<MeshFilter>().mesh = checkpointModel;
+                    selectedRace.FitCollider(cpObject.GetComponent<Renderer>(), cpObject.GetComponent<BoxCollider>());
                 }
             }
 
@@ -374,18 +376,26 @@ public class RaceInspector : Editor
             }
 
             EditorGUILayout.EndHorizontal();
+            EditorGUILayout.Space();
             EditorGUILayout.BeginHorizontal();
 
-            // Box Collider
-
-            EditorGUILayout.PrefixLabel("Box Collider");
-
-            if (GUILayout.Button("Fit All to Mesh"))
+            // Next Model
+            EditorGUILayout.PrefixLabel("Next Checkpoint Mesh");
+            nextCheckpointModel = (Mesh)EditorGUILayout.ObjectField(nextCheckpointModel, typeof(Mesh), true);
+            if (nextCheckpointModel != selectedRace.nextCheckpointModel)
             {
-                foreach (GameObject cpObject in checkpoints)
-                {
-                    selectedRace.FitCollider(cpObject.GetComponent<Renderer>(), cpObject.GetComponent<BoxCollider>());
-                }
+                selectedRace.nextCheckpointModel = nextCheckpointModel;
+            }
+
+            EditorGUILayout.EndHorizontal();
+            EditorGUILayout.BeginHorizontal();
+
+            // Next Material
+            EditorGUILayout.PrefixLabel("Next Checkpoint Mat");
+            nextCheckpointMat = (Material)EditorGUILayout.ObjectField(nextCheckpointMat, typeof(Material), true);
+            if (nextCheckpointMat != selectedRace.nextCheckpointMat)
+            {
+                selectedRace.nextCheckpointMat = nextCheckpointMat;
             }
 
             EditorGUILayout.EndHorizontal();
