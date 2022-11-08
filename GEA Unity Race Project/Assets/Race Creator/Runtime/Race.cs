@@ -298,6 +298,7 @@ public class Race : MonoBehaviour
     /// </summary>
     public void resetRace()
     {
+        raceInfo.player = playerCol.transform;
         raceInfo.currentGate = startLine.transform;
 
         raceInfo.lapsCurrent = 1;

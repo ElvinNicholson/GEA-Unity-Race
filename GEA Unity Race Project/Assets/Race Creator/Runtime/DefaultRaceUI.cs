@@ -7,6 +7,9 @@ public class DefaultRaceUI : MonoBehaviour
     [SerializeField] private Text timerText;
     [SerializeField] private Text lapText;
     [SerializeField] private Image waypoint;
+    [SerializeField] private Transform playerIcon;
+    [SerializeField] private Transform checkpointIcon;
+    [SerializeField] private Camera minimapCam;
 
     private float minX;
     private float minY;
@@ -21,6 +24,9 @@ public class DefaultRaceUI : MonoBehaviour
 
         maxX = Screen.width - minX;
         maxY = Screen.height - minY;
+
+        playerIcon.SetParent(raceInfo.player);
+        playerIcon.transform.localPosition = new Vector3(0, 10, 0);
     }
 
     private void Update()
@@ -30,13 +36,13 @@ public class DefaultRaceUI : MonoBehaviour
             if (raceInfo.time > 0)
             {
                 timerText.enabled = true;
-                UpdateTimerText();
+                updateTimerText();
             }
 
             if (raceInfo.lapsTotal > 1)
             {
                 lapText.enabled = true;
-                UpdateLapText();
+                updateLapText();
             }
 
             waypoint.enabled = true;
@@ -46,9 +52,11 @@ public class DefaultRaceUI : MonoBehaviour
         {
             waypoint.enabled = false;
         }
+
+        updateMinimapCam();
     }
 
-    private void UpdateTimerText()
+    private void updateTimerText()
     {
         float minutes = Mathf.FloorToInt(raceInfo.time / 60);
         float seconds = Mathf.FloorToInt(raceInfo.time % 60);
@@ -57,7 +65,7 @@ public class DefaultRaceUI : MonoBehaviour
         timerText.text = string.Format("{0:00}:{1:00}:{2:00}", minutes, seconds, milliseconds);
     }
 
-    private void UpdateLapText()
+    private void updateLapText()
     {
         lapText.text = string.Format("Lap {0}/{1}", raceInfo.lapsCurrent, raceInfo.lapsTotal);
     }
@@ -66,6 +74,7 @@ public class DefaultRaceUI : MonoBehaviour
     {
         float angle = 0;
         Vector2 newPos = Camera.main.WorldToScreenPoint(raceInfo.currentGate.position);
+        Vector2 flagPos = new Vector2(0, 10);
 
         if (Vector3.Dot((raceInfo.currentGate.position - Camera.main.transform.position), Camera.main.transform.forward) < 0)
         {
@@ -87,12 +96,14 @@ public class DefaultRaceUI : MonoBehaviour
         {
             // Touching left edge of screen
             newPos.y = Screen.height / 2;
+            flagPos = new Vector2(-4, 8);
             angle = -90;
         }
         else if (waypoint.transform.position.x >= maxX)
         {
             // Touching right edge of screen
             newPos.y = Screen.height / 2;
+            flagPos = new Vector2(4, 8);
             angle = 90;
         }
 
@@ -101,6 +112,8 @@ public class DefaultRaceUI : MonoBehaviour
 
         waypoint.transform.position = newPos;
         waypoint.transform.localEulerAngles = new Vector3(0, 0, angle);
+        waypoint.transform.GetChild(0).transform.localEulerAngles = new Vector3(0, 0, -angle);
+        waypoint.transform.GetChild(0).transform.localPosition = flagPos;
     }
 
     private void findRaceInfo()
@@ -115,5 +128,16 @@ public class DefaultRaceUI : MonoBehaviour
         {
             Debug.Log("RaceInfo not found");
         }
+    }
+
+    private void updateMinimapCam()
+    {
+        Vector3 newPos = raceInfo.player.position;
+        newPos.y = minimapCam.transform.position.y;
+        minimapCam.transform.position = newPos;
+
+        Vector3 checkpointPos = raceInfo.currentGate.position;
+        checkpointPos.y = 10;
+        checkpointIcon.transform.position = checkpointPos;
     }
 }

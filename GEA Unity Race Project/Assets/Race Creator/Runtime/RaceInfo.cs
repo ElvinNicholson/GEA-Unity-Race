@@ -14,4 +14,5 @@ public class RaceInfo : MonoBehaviour
     public float time;
 
     public Transform currentGate;
+    public Transform player;
 }
