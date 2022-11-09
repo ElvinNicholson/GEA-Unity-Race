@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 14502412}
   - component: {fileID: 14502413}
   m_Layer: 15
-  m_Name: Player
+  m_Name: Player Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14316,7 +14316,7 @@ GameObject:
   - component: {fileID: 1378653052}
   - component: {fileID: 1378653053}
   m_Layer: 15
-  m_Name: Map Waypoint
+  m_Name: Waypoint Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19235,7 +19235,7 @@ MonoBehaviour:
   lapText: {fileID: 221932383}
   waypoint: {fileID: 1080324122}
   playerIcon: {fileID: 14502412}
-  checkpointIcon: {fileID: 1378653052}
+  waypointIcon: {fileID: 1378653052}
   minimapCam: {fileID: 1127453772}
 --- !u!4 &1853568233
 Transform:

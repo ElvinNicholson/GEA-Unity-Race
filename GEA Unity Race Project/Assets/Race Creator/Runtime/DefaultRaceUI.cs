@@ -6,10 +6,11 @@ public class DefaultRaceUI : MonoBehaviour
     [SerializeField] private RaceInfo raceInfo;
     [SerializeField] private Text timerText;
     [SerializeField] private Text lapText;
-    [SerializeField] private Image waypoint;
+    [SerializeField] private GameObject waypoint;
     [SerializeField] private Transform playerIcon;
-    [SerializeField] private Transform checkpointIcon;
+    [SerializeField] private Transform waypointIcon;
     [SerializeField] private Camera minimapCam;
+    [SerializeField] private float minimapSize;
 
     private float minX;
     private float minY;
@@ -24,12 +25,9 @@ public class DefaultRaceUI : MonoBehaviour
 
         maxX = Screen.width - minX;
         maxY = Screen.height - minY;
-
-        playerIcon.SetParent(raceInfo.player);
-        playerIcon.transform.localPosition = new Vector3(0, 10, 0);
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         if (raceInfo.raceIsRunning)
         {
@@ -45,12 +43,12 @@ public class DefaultRaceUI : MonoBehaviour
                 updateLapText();
             }
 
-            waypoint.enabled = true;
+            waypoint.SetActive(true);
             updateWaypoint();
         }
         else
         {
-            waypoint.enabled = false;
+            waypoint.SetActive(false);
         }
 
         updateMinimapCam();
@@ -132,12 +130,25 @@ public class DefaultRaceUI : MonoBehaviour
 
     private void updateMinimapCam()
     {
-        Vector3 newPos = raceInfo.player.position;
-        newPos.y = minimapCam.transform.position.y;
-        minimapCam.transform.position = newPos;
+        Vector3 camPos = raceInfo.player.position;
+        camPos.y = minimapCam.transform.position.y;
+        minimapCam.transform.position = camPos;
 
         Vector3 checkpointPos = raceInfo.currentGate.position;
-        checkpointPos.y = 10;
-        checkpointIcon.transform.position = checkpointPos;
+
+        checkpointPos.x = Mathf.Clamp(checkpointPos.x, camPos.x - minimapSize, camPos.x + minimapSize);
+        checkpointPos.y = 20;
+        checkpointPos.z = Mathf.Clamp(checkpointPos.z, camPos.z - minimapSize, camPos.z + minimapSize);
+
+        waypointIcon.transform.position = checkpointPos;
+
+        Vector3 playerPos = raceInfo.player.position;
+        playerPos.y = 10;
+
+        Vector2 playerAngle = raceInfo.player.eulerAngles;
+        playerAngle.x = 90;
+
+        playerIcon.transform.position = playerPos;
+        playerIcon.transform.eulerAngles = playerAngle;
     }
 }
