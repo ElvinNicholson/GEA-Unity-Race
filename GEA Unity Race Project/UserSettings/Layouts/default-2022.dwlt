@@ -39,9 +39,9 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 840.6667
+    x: 840
     y: 0
-    width: 419.3333
+    width: 420
     height: 337.3333
   m_MinSize: {x: 102, y: 121}
   m_MaxSize: {x: 4002, y: 4021}
@@ -74,7 +74,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 113
+  controlID: 98
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 129
+  controlID: 51
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -162,23 +162,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: ConsoleWindow
+  m_Name: ProjectBrowser
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 840.6667
+    width: 840
     height: 337.3333
-  m_MinSize: {x: 101, y: 121}
-  m_MaxSize: {x: 4001, y: 4021}
-  m_ActualView: {fileID: 20}
+  m_MinSize: {x: 231, y: 271}
+  m_MaxSize: {x: 10001, y: 10021}
+  m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
   - {fileID: 20}
-  m_Selected: 1
-  m_LastSelected: 0
+  m_Selected: 0
+  m_LastSelected: 1
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -310,7 +310,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: SceneView
+  m_Name: GameView
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -321,12 +321,12 @@ MonoBehaviour:
     height: 490
   m_MinSize: {x: 202, y: 221}
   m_MaxSize: {x: 4002, y: 4021}
-  m_ActualView: {fileID: 18}
+  m_ActualView: {fileID: 19}
   m_Panes:
   - {fileID: 18}
   - {fileID: 19}
-  m_Selected: 0
-  m_LastSelected: 1
+  m_Selected: 1
+  m_LastSelected: 0
 --- !u!114 &14
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -347,9 +347,9 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 840.6667
+    x: 840
     y: 562.6667
-    width: 417.3333
+    width: 418
     height: 316.3333
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
@@ -378,7 +378,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 562.6667
-    width: 839.6667
+    width: 839
     height: 316.3333
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
@@ -397,13 +397,13 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Race Creator/Runtime
+    - Assets/Race Creator/Resources/Textures
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Race Creator/Runtime
+  - Assets/Race Creator/Resources/Textures
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\nicho\Documents\Game Engine Architecture\Git\GEA-Unity-Race\GEA
     Unity Race Project
@@ -411,8 +411,8 @@ MonoBehaviour:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: ca630000
-    m_LastClickedID: 25546
+    m_SelectedIDs: 9a640000
+    m_LastClickedID: 25754
     m_ExpandedIDs: 00000000be620000c0620000c2620000c4620000c662000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -466,8 +466,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 74580000
-    m_LastClickedInstanceID: 22644
+    m_SelectedInstanceIDs: 
+    m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c623000092a80000d45b0000ec660000c66c0000a46b0000e4620000e66200003a6300003c63000042630000
     m_RenameOverlay:
@@ -533,7 +533,7 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 0
+  m_LastVerticalScrollValue: 80
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:
@@ -570,24 +570,24 @@ MonoBehaviour:
     m_SaveData: []
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: de5a0000
-      m_LastClickedID: 23262
-      m_ExpandedIDs: e6faffffec5a0000c05b0000245c0000
+      scrollPos: {x: 0, y: 80}
+      m_SelectedIDs: 4e590000
+      m_LastClickedID: 22862
+      m_ExpandedIDs: 561efdffe6faffff7e5800004e590000e0590000565a00006c5a0000ec5a0000c05b0000245c0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: Player
-        m_OriginalName: Player
+        m_Name: 
+        m_OriginalName: 
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 22644
+        m_UserData: 0
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 4
+        m_OriginalEventType: 11
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 6}
       m_SearchString: 
@@ -856,9 +856,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 1680, y: 240, z: 0}
+    m_Target: {x: -15.779569, y: 0.73527336, z: 19.818214}
     speed: 2
-    m_Value: {x: 1680, y: 240, z: 0}
+    m_Value: {x: -15.779569, y: 0.73527336, z: 19.818214}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -904,13 +904,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.06571348, y: 0.9303644, z: -0.29578125, w: -0.20678051}
+    m_Target: {x: 0.6235456, y: -0.014381454, z: 0.011667484, w: 0.7817272}
     speed: 2
-    m_Value: {x: -0.06570885, y: 0.9302988, z: -0.29576042, w: -0.20676593}
+    m_Value: {x: 0.62346786, y: -0.0143796615, z: 0.01166603, w: 0.78162974}
   m_Size:
-    m_Target: 240.57011
+    m_Target: 53.419125
     speed: 2
-    m_Value: 240.57011
+    m_Value: 53.419125
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -1002,7 +1002,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 0
+    m_EnableMouseInput: 1
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1
@@ -1058,7 +1058,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 562.6667
-    width: 839.6667
+    width: 839
     height: 316.3333
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:

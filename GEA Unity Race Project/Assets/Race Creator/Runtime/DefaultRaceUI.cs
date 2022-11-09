@@ -12,6 +12,11 @@ public class DefaultRaceUI : MonoBehaviour
     [SerializeField] private Camera minimapCam;
     [SerializeField] private float minimapSize;
 
+    public Vector3 test;
+
+    public float testX;
+    public float testZ;
+
     private float minX;
     private float minY;
     private float maxX;
@@ -135,6 +140,21 @@ public class DefaultRaceUI : MonoBehaviour
         minimapCam.transform.position = camPos;
 
         Vector3 checkpointPos = raceInfo.currentGate.position;
+
+        Vector3 localPos = minimapCam.transform.InverseTransformPoint(checkpointPos);
+        //test = localPos;
+        //localPos.z = localPos.y;
+
+        //float boundX = Mathf.Abs(Mathf.Sqrt(Mathf.Pow(minimapSize, 2) - Mathf.Pow(localPos.z, 2)));
+        //float boundZ = Mathf.Abs(Mathf.Sqrt(Mathf.Pow(minimapSize, 2) - Mathf.Pow(localPos.x, 2)));
+
+        //testX = boundX;
+        //testZ = boundZ;
+
+        //if (float.IsNaN(boundX) && float.IsNaN(boundZ))
+        //{
+        //    Debug.Log("AAAAA");
+        //}
 
         checkpointPos.x = Mathf.Clamp(checkpointPos.x, camPos.x - minimapSize, camPos.x + minimapSize);
         checkpointPos.y = 20;
