@@ -8,14 +8,9 @@ public class DefaultRaceUI : MonoBehaviour
     [SerializeField] private Text lapText;
     [SerializeField] private GameObject waypoint;
     [SerializeField] private Transform playerIcon;
-    [SerializeField] private Transform waypointIcon;
+    [SerializeField] private GameObject waypointIcon;
     [SerializeField] private Camera minimapCam;
     [SerializeField] private float minimapSize;
-
-    public Vector3 test;
-
-    public float testX;
-    public float testZ;
 
     private float minX;
     private float minY;
@@ -49,11 +44,13 @@ public class DefaultRaceUI : MonoBehaviour
             }
 
             waypoint.SetActive(true);
+            waypointIcon.SetActive(true);
             updateWaypoint();
         }
         else
         {
             waypoint.SetActive(false);
+            waypointIcon.SetActive(false);
         }
 
         updateMinimapCam();
@@ -141,26 +138,14 @@ public class DefaultRaceUI : MonoBehaviour
 
         Vector3 checkpointPos = raceInfo.currentGate.position;
 
-        Vector3 localPos = minimapCam.transform.InverseTransformPoint(checkpointPos);
-        //test = localPos;
-        //localPos.z = localPos.y;
-
-        //float boundX = Mathf.Abs(Mathf.Sqrt(Mathf.Pow(minimapSize, 2) - Mathf.Pow(localPos.z, 2)));
-        //float boundZ = Mathf.Abs(Mathf.Sqrt(Mathf.Pow(minimapSize, 2) - Mathf.Pow(localPos.x, 2)));
-
-        //testX = boundX;
-        //testZ = boundZ;
-
-        //if (float.IsNaN(boundX) && float.IsNaN(boundZ))
-        //{
-        //    Debug.Log("AAAAA");
-        //}
-
-        checkpointPos.x = Mathf.Clamp(checkpointPos.x, camPos.x - minimapSize, camPos.x + minimapSize);
+        camPos.y = 20;
         checkpointPos.y = 20;
-        checkpointPos.z = Mathf.Clamp(checkpointPos.z, camPos.z - minimapSize, camPos.z + minimapSize);
 
-        waypointIcon.transform.position = checkpointPos;
+        Vector3 localPos = checkpointPos - camPos;
+
+        localPos = Vector3.ClampMagnitude(localPos, minimapSize);
+
+        waypointIcon.transform.position = camPos + localPos;
 
         Vector3 playerPos = raceInfo.player.position;
         playerPos.y = 10;

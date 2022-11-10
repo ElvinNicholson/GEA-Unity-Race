@@ -5433,8 +5433,7 @@ MonoBehaviour:
   checkpointParent: {fileID: 991999553}
   checkpointModel: {fileID: -1214300103201670397, guid: 0f67bbb72f68cc84fbe14305e05a7ef2,
     type: 3}
-  nextCheckpointModel: {fileID: -1214300103201670397, guid: 0f67bbb72f68cc84fbe14305e05a7ef2,
-    type: 3}
+  nextCheckpointModel: {fileID: 4300000, guid: 0a34e4ead57f1404489f7ba06007960b, type: 3}
   checkpointMat: {fileID: 2100000, guid: 61849cf72282c2047b1211fe1ae8acc1, type: 2}
   nextCheckpointMat: {fileID: 2100000, guid: f5e14976f49110848bb4e5e677115358, type: 2}
   checkpoints:
@@ -19170,7 +19169,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1853014150}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -19235,12 +19234,9 @@ MonoBehaviour:
   lapText: {fileID: 221932383}
   waypoint: {fileID: 1080324121}
   playerIcon: {fileID: 14502412}
-  waypointIcon: {fileID: 1378653052}
+  waypointIcon: {fileID: 1378653051}
   minimapCam: {fileID: 1127453772}
   minimapSize: 25
-  test: {x: 0, y: 0, z: 0}
-  testX: 0
-  testZ: 0
 --- !u!4 &1853568233
 Transform:
   m_ObjectHideFlags: 0
