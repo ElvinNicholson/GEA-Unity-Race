@@ -26,8 +26,10 @@ public class Race : MonoBehaviour
     // Checkpoints
     public GameObject checkpointParent;
     public Mesh checkpointModel;
+    public Mesh currentCheckpointModel;
     public Mesh nextCheckpointModel;
     public Material checkpointMat;
+    public Material currentCheckpointMat;
     public Material nextCheckpointMat;
     public List<GameObject> checkpoints = new List<GameObject>();
 
@@ -39,6 +41,9 @@ public class Race : MonoBehaviour
 
     private Gate lastGate;
     private int lastGateNum = 0;
+
+    private Gate nextGate;
+    private int nextGateNum = 0;
 
     public GameObject raceInfoObject;
     public RaceInfo raceInfo;
@@ -86,6 +91,12 @@ public class Race : MonoBehaviour
             currentGate.passed = true;
             currentGateNum++;
             lastGateNum = currentGateNum - 1;
+            nextGateNum = currentGateNum + 1;
+
+            if (nextGateNum > gateOrder.Count - 1)
+            {
+                nextGateNum = 1;
+            }
 
             // Check if the current gate is the finish line
             if (currentGateNum == gateOrder.Count)
@@ -101,6 +112,7 @@ public class Race : MonoBehaviour
              
             currentGate = gateOrder[currentGateNum].GetComponent<Gate>();
             lastGate = gateOrder[lastGateNum].GetComponent<Gate>();
+            nextGate = gateOrder[nextGateNum].GetComponent<Gate>();
 
             changeNextCheckpointVisual();
         }
@@ -320,13 +332,18 @@ public class Race : MonoBehaviour
 
         lastGateNum = 0;
         lastGate = gateOrder[lastGateNum].GetComponent<Gate>();
+
+        nextGateNum = currentGateNum + 1;
+        nextGate = gateOrder[nextGateNum].GetComponent<Gate>();
+
+        changeNextCheckpointVisual();
     }
 
     private void changeNextCheckpointVisual()
     {
         if (lastGateNum != 0 && lastGateNum != gateOrder.Count)
         {
-            Debug.Log(lastGateNum);
+            //Debug.Log(lastGateNum);
             lastGate.GetComponent<MeshFilter>().mesh = checkpointModel;
             lastGate.GetComponent<MeshRenderer>().material = checkpointMat;
             FitCollider(lastGate.GetComponent<Renderer>(), lastGate.GetComponent<BoxCollider>());
@@ -334,10 +351,17 @@ public class Race : MonoBehaviour
 
         if (currentGateNum != 0 && currentGateNum != gateOrder.Count)
         {
-            Debug.Log(currentGateNum);
-            currentGate.GetComponent<MeshFilter>().mesh = nextCheckpointModel;
-            currentGate.GetComponent<MeshRenderer>().material = nextCheckpointMat;
+            //Debug.Log(currentGateNum);
+            currentGate.GetComponent<MeshFilter>().mesh = currentCheckpointModel;
+            currentGate.GetComponent<MeshRenderer>().material = currentCheckpointMat;
             FitCollider(currentGate.GetComponent<Renderer>(), currentGate.GetComponent<BoxCollider>());
+        }
+
+        if (nextGateNum != 0 && nextGateNum != gateOrder.Count)
+        {
+            nextGate.GetComponent<MeshFilter>().mesh = nextCheckpointModel;
+            nextGate.GetComponent<MeshRenderer>().material = nextCheckpointMat;
+            FitCollider(nextGate.GetComponent<Renderer>(), nextGate.GetComponent<BoxCollider>());
         }
     }
 }

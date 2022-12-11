@@ -43,8 +43,10 @@ public class RaceInspector : Editor
     // Checkpoints
     bool foldoutCheckpoint = true;
     Mesh checkpointModel;
+    Mesh currentCheckpointModel;
     Mesh nextCheckpointModel;
     Material checkpointMat;
+    Material currentCheckpointMat;
     Material nextCheckpointMat;
     List<GameObject> checkpoints;
 
@@ -84,6 +86,9 @@ public class RaceInspector : Editor
         checkpoints = selectedRace.checkpoints;
         checkpointModel = selectedRace.checkpointModel;
         checkpointMat = selectedRace.checkpointMat;
+
+        currentCheckpointModel = selectedRace.currentCheckpointModel;
+        currentCheckpointMat = selectedRace.currentCheckpointMat;
 
         nextCheckpointModel = selectedRace.nextCheckpointModel;
         nextCheckpointMat = selectedRace.nextCheckpointMat;
@@ -379,6 +384,29 @@ public class RaceInspector : Editor
             EditorGUILayout.Space();
             EditorGUILayout.BeginHorizontal();
 
+            // Current Model
+            EditorGUILayout.PrefixLabel("Current Checkpoint Mesh");
+            currentCheckpointModel = (Mesh)EditorGUILayout.ObjectField(currentCheckpointModel, typeof(Mesh), true);
+            if (currentCheckpointModel != selectedRace.currentCheckpointModel)
+            {
+                selectedRace.currentCheckpointModel = currentCheckpointModel;
+            }
+
+            EditorGUILayout.EndHorizontal();
+            EditorGUILayout.BeginHorizontal();
+
+            // Current Material
+            EditorGUILayout.PrefixLabel("Current Checkpoint Mat");
+            currentCheckpointMat = (Material)EditorGUILayout.ObjectField(currentCheckpointMat, typeof(Material), true);
+            if (currentCheckpointMat != selectedRace.currentCheckpointMat)
+            {
+                selectedRace.currentCheckpointMat = currentCheckpointMat;
+            }
+
+            EditorGUILayout.EndHorizontal();
+            EditorGUILayout.Space();
+            EditorGUILayout.BeginHorizontal();
+
             // Next Model
             EditorGUILayout.PrefixLabel("Next Checkpoint Mesh");
             nextCheckpointModel = (Mesh)EditorGUILayout.ObjectField(nextCheckpointModel, typeof(Mesh), true);
@@ -400,6 +428,7 @@ public class RaceInspector : Editor
 
             EditorGUILayout.EndHorizontal();
             EditorGUILayout.Space();
+
 
             int i = 0;
             int indexToRemove = 0;
