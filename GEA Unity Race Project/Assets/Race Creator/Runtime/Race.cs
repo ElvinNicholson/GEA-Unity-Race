@@ -170,7 +170,13 @@ public class Race : MonoBehaviour
         checkpointParent.transform.SetParent(gameObject.transform);
 
         checkpointModel = Resources.Load<Mesh>("Models/CheckpointRing");
-        checkpointMat = Resources.Load<Material>("Materials/Checkpoint_Material");
+        checkpointMat = Resources.Load<Material>("Materials/Checkpoint_Grey");
+
+        currentCheckpointModel = Resources.Load<Mesh>("Models/CheckpointRing");
+        currentCheckpointMat = Resources.Load<Material>("Materials/Checkpoint_Green");
+
+        nextCheckpointModel = Resources.Load<Mesh>("Models/CheckpointRing");
+        nextCheckpointMat = Resources.Load<Material>("Materials/Checkpoint_Yellow");
 
         for (int i = 0; i < numberOfCheckpoint; i++)
         {
@@ -341,7 +347,7 @@ public class Race : MonoBehaviour
 
     private void changeNextCheckpointVisual()
     {
-        if (lastGateNum != 0 && lastGateNum != gateOrder.Count)
+        if (lastGateNum != 0 && lastGateNum != gateOrder.Count - 1)
         {
             //Debug.Log(lastGateNum);
             lastGate.GetComponent<MeshFilter>().mesh = checkpointModel;
@@ -349,7 +355,7 @@ public class Race : MonoBehaviour
             FitCollider(lastGate.GetComponent<Renderer>(), lastGate.GetComponent<BoxCollider>());
         }
 
-        if (currentGateNum != 0 && currentGateNum != gateOrder.Count)
+        if (currentGateNum != 0 && currentGateNum != gateOrder.Count - 1)
         {
             //Debug.Log(currentGateNum);
             currentGate.GetComponent<MeshFilter>().mesh = currentCheckpointModel;
@@ -357,7 +363,7 @@ public class Race : MonoBehaviour
             FitCollider(currentGate.GetComponent<Renderer>(), currentGate.GetComponent<BoxCollider>());
         }
 
-        if (nextGateNum != 0 && nextGateNum != gateOrder.Count)
+        if (nextGateNum != 0 && nextGateNum != gateOrder.Count - 1)
         {
             nextGate.GetComponent<MeshFilter>().mesh = nextCheckpointModel;
             nextGate.GetComponent<MeshRenderer>().material = nextCheckpointMat;
