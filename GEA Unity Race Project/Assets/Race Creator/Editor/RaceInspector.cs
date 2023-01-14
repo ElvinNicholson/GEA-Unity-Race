@@ -353,7 +353,7 @@ public class RaceInspector : Editor
             EditorGUILayout.BeginHorizontal();
 
             // Model
-            EditorGUILayout.PrefixLabel("Checkpoint Mesh");
+            EditorGUILayout.PrefixLabel("Inactive Mesh");
             checkpointModel = (Mesh)EditorGUILayout.ObjectField(checkpointModel, typeof(Mesh), true);
             if (checkpointModel != selectedRace.checkpointModel)
             {
@@ -369,7 +369,7 @@ public class RaceInspector : Editor
             EditorGUILayout.BeginHorizontal();
 
             // Material
-            EditorGUILayout.PrefixLabel("Checkpoint Material");
+            EditorGUILayout.PrefixLabel("Inactive Material");
             checkpointMat = (Material)EditorGUILayout.ObjectField(checkpointMat, typeof(Material), true);
             if (checkpointMat != selectedRace.checkpointMat)
             {
@@ -385,7 +385,7 @@ public class RaceInspector : Editor
             EditorGUILayout.BeginHorizontal();
 
             // Current Model
-            EditorGUILayout.PrefixLabel("Current Checkpoint Mesh");
+            EditorGUILayout.PrefixLabel("Active Mesh");
             currentCheckpointModel = (Mesh)EditorGUILayout.ObjectField(currentCheckpointModel, typeof(Mesh), true);
             if (currentCheckpointModel != selectedRace.currentCheckpointModel)
             {
@@ -396,7 +396,7 @@ public class RaceInspector : Editor
             EditorGUILayout.BeginHorizontal();
 
             // Current Material
-            EditorGUILayout.PrefixLabel("Current Checkpoint Mat");
+            EditorGUILayout.PrefixLabel("Active Material");
             currentCheckpointMat = (Material)EditorGUILayout.ObjectField(currentCheckpointMat, typeof(Material), true);
             if (currentCheckpointMat != selectedRace.currentCheckpointMat)
             {
@@ -408,7 +408,7 @@ public class RaceInspector : Editor
             EditorGUILayout.BeginHorizontal();
 
             // Next Model
-            EditorGUILayout.PrefixLabel("Next Checkpoint Mesh");
+            EditorGUILayout.PrefixLabel("Next Active Mesh");
             nextCheckpointModel = (Mesh)EditorGUILayout.ObjectField(nextCheckpointModel, typeof(Mesh), true);
             if (nextCheckpointModel != selectedRace.nextCheckpointModel)
             {
@@ -419,7 +419,7 @@ public class RaceInspector : Editor
             EditorGUILayout.BeginHorizontal();
 
             // Next Material
-            EditorGUILayout.PrefixLabel("Next Checkpoint Mat");
+            EditorGUILayout.PrefixLabel("Next Active Material");
             nextCheckpointMat = (Material)EditorGUILayout.ObjectField(nextCheckpointMat, typeof(Material), true);
             if (nextCheckpointMat != selectedRace.nextCheckpointMat)
             {
